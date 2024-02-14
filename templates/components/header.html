@@ -1,0 +1,53 @@
+ 
+{% load static %}
+ <div class="navbar menu navbar-dark bg-none mb-5 navbar-expand-sm fixed-top" style="background:none;background:#161313; box-shadow: 0 4px 50px 0 rgb(249 235 235 / 20%), 0 6px 50px 0 rgb(227 215 215 / 19%); color:white;">
+    <div class="container">
+      {% comment %} <h1 class="text-center text-white" class="tangerine"> <a class="text-center text-white" href="{% url 'home' %}"> <b>DSY BD</b> </a></h1> {% endcomment %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto font-weight-bold">
+          <li class="nav-item"> <a href="{% url 'home' %}" class="nav-link active">Home</a> </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tax-Calculation
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a class="dropdown-item" href="{% url 'user_coreulations_create' %}">Advanced</a>
+              <a class="dropdown-item" href="{% url 'user_coreulations_list' %}">Advanced List</a>
+              <a class="dropdown-item" href="{% url 'simple_calculations_create' %}">Simple Calculator</a>
+            </div>
+          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+              </div>
+            </li>
+
+          {% else %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tax-Calculation
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a class="dropdown-item" href="{% url 'simple_calculations_create' %}">Simple Calculator</a>
+            </div>
+          </li>
+            <li class="nav-item"> <a href="{% url 'register' %}" class="nav-link">Registration</a> </li>
+            <li class="nav-item"> <a href="{% url 'login' %}" class="nav-link">Login</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link">{{ user.email }}</a> </li>
+          {% endif %}
+          
+        </ul>
+      </div>
+    </div>
+  </div>

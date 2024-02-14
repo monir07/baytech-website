@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}Dashboard{% endblock title %}</title>
+        <link rel="icon" type="image/png" href="{% static 'dashboard/images/favicon.png' %}"/>
+        {% include 'partials/dashboard/_css.html' %} 
+        {% block style %}{%endblock style %}
+
+        
+    </head>
+    <body>
+        <div class="sa-app sa-app--desktop-sidebar-shown sa-app--mobile-sidebar-hidden sa-app--toolbar-fixed">
+            {% include 'partials/common/_toaster.html' %}
+            
+            {% include 'partials/dashboard/_sidebar.html' %}
+
+            <div class="sa-app__content">
+                {% include 'partials/dashboard/_header.html' %}
+                <div id="top" class="sa-app__body px-2 px-lg-2">
+                {% block content %}{% endblock content %}
+                </div>
+
+                {% include 'partials/dashboard/_footer.html' %}
+            </div>
+        </div>
+    </body>
+
+    {% include 'partials/dashboard/_js.html' %}
+    {% block script %}{% endblock script %}
+</html>

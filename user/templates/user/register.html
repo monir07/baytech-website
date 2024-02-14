@@ -1,0 +1,42 @@
+{% extends 'basic.html' %}
+{% block title %} Registration {% endblock %}
+{% block SignUp %} active{% endblock SignUp %}
+{% block body %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="container pb-2" >
+    <div class="row" style="
+        box-shadow: 0 4px 50px 0 rgb(249 235 235 / 20%), 0 6px 50px 0 rgb(227 215 215 / 19%);background:none;">
+        <div class="col-lg-4" >
+            <div class="img">
+                <img src="{% static 'img/meet.svg' %}">
+            </div>
+        </div>
+        <div class="col-lg-7  pb-2" >
+            <h2 class="text-center border-bottom py-2" >Register New Account</h2>
+            <form method="post" action="{% url 'register' %}" >
+                {% csrf_token %}
+                {% include 'components/register_form.html' %}
+                <button type="submit" vlaue="submit" style="width:100%;" class="btn btn-primary ">Submit</button>
+            </form>
+            <p class="text-center pt-3"> Already Have Account? 
+            <a  style="text-align:center;" href="{% url 'login' %}">Login here</a>
+        </p>
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}
+
+
+{% block css %}
+.form-control:hover{
+    background-color: rgb(46, 23, 68);
+    color:aliceblue;
+}
+.form-control{
+   background:none;
+}
+{% endblock %}
