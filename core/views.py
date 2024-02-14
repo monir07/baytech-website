@@ -17,4 +17,4 @@ def health_check(request: Request) -> Response:
 
 
 class HomePageView(TemplateView):
-    template_name = "homepage.html"
+    template_name = "home.html"

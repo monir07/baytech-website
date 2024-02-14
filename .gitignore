@@ -115,6 +115,7 @@ target/
 celerybeat-schedule
 
 # SageMath parsed files
+db.sqlite3
 *.sage.py
 
 # dotenv
