@@ -1,8 +1,9 @@
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 from datetime import timedelta
 from core.load_vars import *
-
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.environ.get('DEBUG')

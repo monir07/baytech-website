@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.urls.conf import re_path
-from core.views import health_check, HomePageView
+from core.views import health_check, HomePageView, reference_html
 from core.settings import DEBUG
 from django.contrib import admin
 from rest_framework import permissions
@@ -13,15 +13,15 @@ from django.conf.urls.static import static
 
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Project API Documentation",
-      default_version='v1.0',
-      description="Api description",
-      contact=openapi.Contact(email="mdfahadhossain71@gmail.com"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=False,
-   permission_classes=(permissions.IsAuthenticated,),
+    openapi.Info(
+        title="Project API Documentation",
+        default_version='v1.0',
+        description="Api description",
+        contact=openapi.Contact(email="mdfahadhossain71@gmail.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=False,
+    permission_classes=(permissions.IsAuthenticated,),
 )
 
 v1_patterns = [
@@ -31,6 +31,7 @@ v1_patterns = [
 
     
 urlpatterns = [
+    re_path(r'^.*\.html', reference_html, name='ref_template'),
     path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('users/', include(user_urls)),
@@ -50,9 +51,9 @@ if DEBUG:
         re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     ]
 
-admin.site.site_header = "DSY Admin"
-admin.site.site_title = "DSY Admin Portal"
-admin.site.index_title = "Welcome to DSY"
+admin.site.site_header = "TAM Admin"
+admin.site.site_title = "TAM Admin Portal"
+admin.site.index_title = "Welcome to TAM"
 
 handler400 = 'base.views.custom_error_400'
 handler403 = 'base.views.custom_error_403'
