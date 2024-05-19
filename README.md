@@ -1,4 +1,5 @@
-#  To Run the project
+#  Time Attendance Monitoring (TAM) Application
+#  To Run the project 
 ## Prerequisites
 
 - install Docker and docker compose
