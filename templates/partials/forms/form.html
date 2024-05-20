@@ -1,0 +1,58 @@
+{% extends "home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block app_content %}
+    <style type="text/css">
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow: hidden;
+            background: #1C203C;
+            color: white;}
+
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            font-size: large;
+            }
+    </style>
+    <div class="side-app">
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">{{ title|title }}</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Table</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                </ol>
+            </div>
+            <div class="ml-auto pageheader-btn">
+                <a href="{% url "device_create" %}" class="btn btn-secondary btn-icon text-white">
+                    <span>
+                        <i class="fe fe-plus"></i>
+                    </span> Add Device
+                </a>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <!--COLUMN ONE START HERE-->
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <!--COLUMN ONE START HERE-->
+                                    <div class="col-md-12">
+                                        {% crispy form %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock app_content %}

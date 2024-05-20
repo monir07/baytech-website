@@ -140,3 +140,8 @@ class NotEqual(Lookup):
 
 def get_fields(model, fieldnames):
     return [model._meta.get_field(field) for field in fieldnames]
+
+class Breadcrumb:
+    def __init__(self, name, url=None):
+        self.name = name
+        self.url = url

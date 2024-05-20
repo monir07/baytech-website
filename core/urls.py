@@ -8,6 +8,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from user import urls as user_urls
 from user import urls_api as user_api
+from ta_device import urls as device_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -38,6 +39,8 @@ urlpatterns = [
     path('api/', include([
         path('v1.0/', include(v1_patterns))
     ])),
+
+    path('tam/', include(device_urls)),
 ]
 
 urlpatterns += [path('api-auth/', include('rest_framework.urls')),]
