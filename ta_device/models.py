@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models import UniqueConstraint
 from base.models import BaseModel
+
 
 class SimplifyBaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
@@ -25,14 +27,14 @@ class DeviceControl(SimplifyBaseModel):
     end_time = models.TimeField()
 
     def __str__(self) -> str:
-        return f'{self.start_time}:{self.end_time}'
+        return f'{self.device}>{self.start_time}:{self.end_time}'
     
     class Meta:
         ordering = ('-created_at',)
 
 
 class Department(SimplifyBaseModel):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80, unique=True)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -42,8 +44,8 @@ class Department(SimplifyBaseModel):
 
 
 class Section(SimplifyBaseModel):
-    department = models.ForeignKey(Department, on_delete=models.PROTECT, related_name='selction_list')
-    name = models.CharField(max_length=80)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='selction_list')
+    name = models.CharField(max_length=80, unique=True)
 
     def __str__(self) -> str:
         return f'{self.department.name}:{self.name}'
@@ -98,32 +100,41 @@ class Shift(SimplifyBaseModel):
 
 
 class Employee(BaseModel):
-    device = models.ForeignKey(TADevice, on_delete=models.CASCADE, related_name='employee_device')
+    device = models.ForeignKey(TADevice, on_delete=models.PROTECT, related_name='employee_device')
+    device_id = models.IntegerField()
     emp_id = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=150)
     designation = models.CharField(max_length=150)
-    section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='employee_list')
-    shift = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_employee')
+    section = models.ForeignKey(Section, on_delete=models.PROTECT, related_name='employee_list')
+    shift = models.ForeignKey(Shift, on_delete=models.PROTECT, related_name='shift_employee')
     card_no = models.IntegerField()
-    device_id = models.IntegerField()
 
     def __str__(self):
         return f'{self.emp_id}:{self.name}'
     
     class Meta:
         ordering=('-created_at', )
+        constraints = [
+            UniqueConstraint(fields=['device', 'emp_id'], name='unique_device_emp')
+        ]
 
 
 class Attendance(BaseModel):
     emp = models.ForeignKey(Employee, on_delete=models.PROTECT, related_name='attend_emp')
+    punch_in_device = models.ForeignKey(TADevice, on_delete=models.PROTECT, related_name='attendance_in')
     punch_in_date = models.DateField()
     punch_in_time = models.TimeField()
-    punch_in_device = models.TimeField()
     
-    punch_out_date = models.DateField()
-    punch_out_time = models.TimeField()
-    punch_out_device = models.TimeField()
+    punch_out_device = models.ForeignKey(TADevice, on_delete=models.PROTECT, related_name='attendance_out', blank=True, null=True)
+    punch_out_date = models.DateField(blank=True, null=True)
+    punch_out_time = models.TimeField(blank=True, null=True)
 
-    working_hour = models.DecimalField(max_digits=5)
+    working_hour = models.DecimalField(max_digits=5, default=0.0)
     status = models.BooleanField(default=False)  # in-time/late
-    late_count = models.DecimalField(max_digits=5, blank=True, null=True)  # count in minitue
+    late_count = models.TimeField(blank=True, null=True)  # count in minitue
+
+    class Meta:
+        ordering=('-created_at', )
+        constraints = [
+            UniqueConstraint(fields=['emp', 'punch_in_date'], name='unique_emp_date')
+        ]

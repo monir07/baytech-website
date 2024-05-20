@@ -28,6 +28,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'user',
+    'ta_device',
 ]
 
 
