@@ -44,11 +44,11 @@ class Department(SimplifyBaseModel):
 
 
 class Section(SimplifyBaseModel):
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='selction_list')
+    department_list = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='selction_list')
     name = models.CharField(max_length=80, unique=True)
 
     def __str__(self) -> str:
-        return f'{self.department.name}:{self.name}'
+        return f'{self.department_list.name}:{self.name}'
     
     class Meta:
         ordering=('-created_at', )
@@ -65,15 +65,15 @@ class Holiday(SimplifyBaseModel):
 
 
 class HolidayCalender(SimplifyBaseModel):
-    holiday = models.ForeignKey(Holiday, on_delete=models.CASCADE, related_name='holiday_calender')
+    holiday_list = models.ForeignKey(Holiday, on_delete=models.CASCADE, related_name='holiday_calender')
     date_from = models.DateField()
     date_to = models.DateField()
-    total_day = models.DecimalField(max_digits=5)
+    total_day = models.DecimalField(max_digits=5, decimal_places=2)
     year = models.IntegerField()
     
 
     def __str__(self) -> str:
-        return f'{self.holiday}:{self.year}'
+        return f'{self.holiday_list}:{self.year}'
     
     class Meta:
         ordering=('-created_at', )
@@ -83,7 +83,7 @@ class Shift(SimplifyBaseModel):
     name = models.CharField(max_length=30)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    duration = models.DecimalField(max_digits=5)
+    duration = models.DecimalField(max_digits=5, decimal_places=2)
     sat = models.BooleanField(default=False)
     sun = models.BooleanField(default=False)
     mon = models.BooleanField(default=False)
@@ -101,8 +101,8 @@ class Shift(SimplifyBaseModel):
 
 class Employee(BaseModel):
     device = models.ForeignKey(TADevice, on_delete=models.PROTECT, related_name='employee_device')
-    device_id = models.IntegerField()
-    emp_id = models.CharField(max_length=50, unique=True)
+    device_id_no = models.IntegerField()
+    emp_id_no = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=150)
     designation = models.CharField(max_length=150)
     section = models.ForeignKey(Section, on_delete=models.PROTECT, related_name='employee_list')
@@ -110,12 +110,12 @@ class Employee(BaseModel):
     card_no = models.IntegerField()
 
     def __str__(self):
-        return f'{self.emp_id}:{self.name}'
+        return f'{self.emp_id_no}:{self.name}'
     
     class Meta:
         ordering=('-created_at', )
         constraints = [
-            UniqueConstraint(fields=['device', 'emp_id'], name='unique_device_emp')
+            UniqueConstraint(fields=['device', 'emp_id_no'], name='unique_device_emp')
         ]
 
 
@@ -129,7 +129,7 @@ class Attendance(BaseModel):
     punch_out_date = models.DateField(blank=True, null=True)
     punch_out_time = models.TimeField(blank=True, null=True)
 
-    working_hour = models.DecimalField(max_digits=5, default=0.0)
+    working_hour = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     status = models.BooleanField(default=False)  # in-time/late
     late_count = models.TimeField(blank=True, null=True)  # count in minitue
 
