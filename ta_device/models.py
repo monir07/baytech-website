@@ -1,3 +1,4 @@
+from datetime import datetime, date, timedelta
 from django.db import models
 from django.db.models import UniqueConstraint
 from base.models import BaseModel
@@ -130,7 +131,8 @@ class Attendance(BaseModel):
     punch_out_date = models.DateField(blank=True, null=True)
     punch_out_time = models.TimeField(blank=True, null=True)
 
-    working_hour = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    duration = models.TimeField(blank=True, null=True)
+    # working_hour = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     status = models.BooleanField(default=False)  # in-time/late
     late_count = models.TimeField(blank=True, null=True)  # count in minitue
 
