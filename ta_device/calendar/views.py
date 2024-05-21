@@ -128,7 +128,12 @@ class HolidayCalendarCreateView(generic.CreateView):
     
     def form_valid(self, form, *args, **kwargs):
         self.object = form.save(commit=False)
-        self.object.created_by = self.request.user
+        date_from = form.cleaned_data['date_from']
+        date_to = form.cleaned_data['date_to']
+        duration = date_to - date_from
+        self.object.total_day = duration.days + 1
+        self.object.year = date_from.year
+        self.object.save()
         with transaction.atomic():
             form.save()
         messages.success(self.request, self.success_message)
@@ -161,7 +166,11 @@ class HolidayCalendarUpdateView(generic.UpdateView):
 
     def form_valid(self, form, *args, **kwargs):
         self.object = form.save(commit=False)
-        self.object.updated_by = self.request.user
+        date_from = form.cleaned_data['date_from']
+        date_to = form.cleaned_data['date_to']
+        duration = date_to - date_from
+        self.object.total_day = duration.days + 1
+        self.object.year = date_from.year
         self.object.save()
         messages.success(self.request, self.success_message)
         return self.get_success_url()

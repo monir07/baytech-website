@@ -10,7 +10,8 @@ class EmployeeForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.fields['device_status'].widget.attrs['class'] ='select2_single form-control'
+        self.fields['device'].widget.attrs['class'] ='select2-show-search'
+        self.fields['section'].widget.attrs['class'] ='select2-show-search'
         
         field_list = self.Meta.fields
         self.helper = FormHelper()

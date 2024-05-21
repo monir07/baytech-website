@@ -35,7 +35,7 @@ class HolidayForm(forms.ModelForm):
 class HolidayCalenderForm(forms.ModelForm):
     class Meta:
         model = HolidayCalender
-        fields = ('holiday_list', 'date_from', 'date_to', 'total_day', 'year')
+        fields = ('holiday_list', 'date_from', 'date_to')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
