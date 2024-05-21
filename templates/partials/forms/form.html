@@ -23,11 +23,13 @@
                 {% include "components/breadcrumb.html" %}
             </div>
             <div class="ml-auto pageheader-btn">
-                <a href="{% url "device_create" %}" class="btn btn-secondary btn-icon text-white">
+                {% if list_url %}
+                <a href="{% url list_url %}" class="btn btn-secondary btn-icon text-white">
                     <span>
-                        <i class="fe fe-plus"></i>
-                    </span> Add Device
+                        <i class="fe fe-list"></i>
+                    </span> List
                 </a>
+                {% endif %}
             </div>
         </div>
         <!-- PAGE-HEADER END -->
