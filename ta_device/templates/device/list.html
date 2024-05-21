@@ -1,5 +1,6 @@
 {% extends 'home.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block app_content %}
     <!-- PAGE -->
@@ -8,17 +9,24 @@
         <div class="page-header">
             <div>
                 <h1 class="page-title">{{ title|title }}</h1>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Table</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tables</li>
-                </ol>
+                {% include "components/breadcrumb.html" %}
             </div>
             <div class="ml-auto pageheader-btn">
-                <a href="{% url "device_create" %}" class="btn btn-secondary btn-icon text-white">
+                {% if create_url %}
+                <a href="{% url create_url %}" class="btn btn-secondary btn-icon text-white">
                     <span>
                         <i class="fe fe-plus"></i>
-                    </span> Add Device
+                    </span> Add New
                 </a>
+                {% endif %}
+
+                {% if history_url %}
+                <a href="{% url history_url %}" class="btn btn-warning btn-icon text-white">
+                    <span>
+                        <i class="fe fe-list"></i>
+                    </span> History
+                </a>
+                {% endif %}
             </div>
         </div>
         <!-- PAGE-HEADER END -->
@@ -28,14 +36,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table
-                                class="table table-striped table-bordered text-nowrap w-100">
+                            <table id="no-paging-table" class="table table-striped table-bordered text-nowrap w-100" data-ordering='false'>
                                 <thead>
                                     <tr>
                                         <th class="w-5">SL No</th>
                                         <th class="w-30">Device Name</th>
                                         <th class="w-30">IP Address</th>
-                                        <th class="w-20">Status</th>
+                                        <th class="w-20 text-center">Status</th>
                                         <th class="w-20">Actions</th>
                                     </tr>
                                 </thead>
@@ -45,14 +52,31 @@
                                         <td> {{ forloop.counter }} </td>
                                         <td class="text-wrap text-left"> {{ item.device_name }} </td>
                                         <td> {{ item.ip_address}} </td>
-                                        <td> {{ item.device_status}} </td>
-                                        <td> <!--Action--> 
-                                            <a class="btn btn-warning" href="{% url "device_update" item.pk %}">
-                                                <i class="fa fa-pencil-square"></i> Update
+                                        <td class="text-center"> 
+                                            {% if item.device_status %}
+                                            <a href="#" class="btn btn-radius btn-green">
+                                                <i class="fa fa-check"></i> Connected
                                             </a>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-eye"></i> Details
-                                            </a>
+                                            {% else %}
+                                            <a href="#" class="btn btn-radius btn-danger"><i class="fa fa-times"></i>  Disconnect</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if action_urls %}
+                                                {% for url in action_urls %}
+                                                    {% if url|split:'_'|last == 'sublist' %}
+                                                        {% if not history %}
+                                                        <a href="{% url url item.pk %}" type="button" class="btn btn-success"><i class="fa fa-list"></i> List</a>
+                                                        {% endif %}
+                                                    {% elif url|split:'_'|last == 'details' %} 
+                                                    <a href="{% url url item.pk %}" type="button" class="btn btn-primary"><i class="fa fa-eye"></i> Details</a>
+                                                    {% elif url|split:'_'|last == 'update' %} 
+                                                    <a href="{% url url item.pk %}" type="button" class="btn btn-yellow"><i class="fa fa-edit"></i> Update</a>
+                                                    {% elif url|split:'_'|last == 'delete' %}
+                                                    <a href="{% url url item.pk %}" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     {% endfor %}

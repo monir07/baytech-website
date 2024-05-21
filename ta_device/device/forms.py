@@ -10,7 +10,8 @@ class TADeviceForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.fields['cash_balance'].widget.attrs['class'] ='select2_single form-control'
+        # self.fields['device_status'].widget.attrs['class'] ='select2_single form-control'
+        self.fields['device_status'].help_text ='I am declaring this device will be active.'
         
         field_list = self.Meta.fields
         self.helper = FormHelper()

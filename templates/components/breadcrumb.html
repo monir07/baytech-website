@@ -1,0 +1,19 @@
+{% load static %}
+<ol class="breadcrumb1">
+    {% comment %} <li class="breadcrumb-item active" aria-current="page">Navigation</li> {% endcomment %}
+    {% for breadcrumb in breadcrumbs %}
+        {% if breadcrumb.url %}
+            <li class="breadcrumb-item1"><a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a></li>
+        {% else %}
+            {% comment %} <span>{{ breadcrumb.name }}</span> {% endcomment %}
+            <li class="breadcrumb-item1 active" aria-current="page">{{ breadcrumb.name }}</li>
+        {% endif %}
+        {% comment %} {% if not forloop.last %} <li>&nbsp;<i class="fa fa-angle-double-right"></i> &nbsp;</li> {% endif %} {% endcomment %}
+    {% endfor %}
+</ol>
+
+
+{% comment %} <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Tables</li>
+</ol> {% endcomment %}
