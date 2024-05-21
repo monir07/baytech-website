@@ -12,7 +12,7 @@ from django.db.models import Q
 from xhtml2pdf import pisa
 from django.db.models import Lookup
 from django.apps import apps
-
+from datetime import datetime, date, timedelta
 
 def create_slug(title: str, random_str: str = None) -> str:
     title = re.sub('[^A-Za-z ]+', ' ', title).lower().strip()
@@ -110,7 +110,6 @@ def format_search_string(fields, keyword):
             Qr = Qr | q
         else:
             Qr = q
-    print(Qr, '---------------------- query ----------------------')
     return Qr
 
 
@@ -146,3 +145,20 @@ class Breadcrumb:
     def __init__(self, name, url=None):
         self.name = name
         self.url = url
+
+
+def get_duration(start_time, end_time):
+        # Combine start_time and end_time with today's date
+        today = date.today()
+        start_datetime = datetime.combine(today, start_time)
+        end_datetime = datetime.combine(today, end_time)
+
+        # Calculate the duration
+        duration = end_datetime - start_datetime
+
+        # Handle cases where end_time might be the next day
+        if duration < timedelta(0):
+            duration += timedelta(days=1)
+
+        # Return the duration in your preferred format
+        return duration

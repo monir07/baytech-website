@@ -4,6 +4,7 @@ from ta_device.calendar import urls as calendar_urls
 from ta_device.device import urls as device_urls
 from ta_device.employee import urls as employee_urls
 from ta_device.department import urls as department_urls
+from ta_device.shift import urls as shift_urls
 
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('device/', include(device_urls)),
     path('employee/', include(employee_urls)),
     path('department/', include(department_urls)),
+    path('shift/', include(shift_urls)),
 ]
