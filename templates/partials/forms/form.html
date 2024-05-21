@@ -2,6 +2,29 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block css %}
+<!-- INTERNAL  FILE UPLODE CSS -->
+<link href={% static 'assets/plugins/fileuploads/css/fileupload.css' %}  rel="stylesheet" type="text/css"/>
+
+<!-- INTERNAL SELECT2 CSS -->
+<link href={% static 'assets/plugins/select2/select2.min.css' %}  rel="stylesheet"/>
+
+<!-- INTERNAL BOOTSTRAP-DATERANGEPICKER CSS -->
+<link rel="stylesheet" href={% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker.css' %} >
+
+<!-- INTERNAL  TIME PICKER CSS -->
+<link href={% static 'assets/plugins/time-picker/jquery.timepicker.css' %}  rel="stylesheet"/>
+
+<!-- INTERNAL  DATE PICKER CSS-->
+<link href={% static 'assets/plugins/date-picker/spectrum.css' %}  rel="stylesheet"/>
+
+<!-- INTERNAL  MULTI SELECT CSS -->
+<link rel="stylesheet" href={% static 'assets/plugins/multipleselect/multiple-select.css' %} >
+
+<!-- INTERNAL TELEPHONE CSS-->
+<link rel="stylesheet" href={% static 'assets/plugins/telephoneinput/telephoneinput.css' %} >
+{% endblock css %}
+
 {% block app_content %}
     <style type="text/css">
         .ui-autocomplete {
@@ -55,3 +78,37 @@
         </div>
     </div>
 {% endblock app_content %}
+
+{% block js %}
+<!-- INTERNAL  FILE UPLOADES JS -->
+<script src={% static 'assets/plugins/fileuploads/js/fileupload.js' %}></script>
+<script src={% static 'assets/plugins/fileuploads/js/file-upload.js' %}></script>
+
+<!-- INTERNAL SELECT2 JS -->
+<script src={% static 'assets/plugins/select2/select2.full.min.js' %}></script>
+
+<!-- INTERNAL BOOTSTRAP-DATERANGEPICKER JS -->
+<script src={% static 'assets/plugins/bootstrap-daterangepicker/moment.min.js' %}></script>
+<script src={% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker.js' %}></script>
+
+<!-- INTERNAL  TIMEPICKER JS -->
+<script src={% static 'assets/plugins/time-picker/jquery.timepicker.js' %}></script>
+<script src={% static 'assets/plugins/time-picker/toggles.min.js' %}></script>
+
+<!-- INTERNAL DATEPICKER JS-->
+<script src={% static 'assets/plugins/date-picker/spectrum.js' %}></script>
+<script src={% static 'assets/plugins/date-picker/jquery-ui.js' %}></script>
+<script src={% static 'assets/plugins/input-mask/jquery.maskedinput.js' %}></script>
+
+<!-- INTERNAL MULTI SELECT JS -->
+<script src={% static 'assets/plugins/multipleselect/multiple-select.js' %}></script>
+<script src={% static 'assets/plugins/multipleselect/multi-select.js' %}></script>
+
+<!--INTERNAL  FORMELEMENTS JS -->
+<script src={% static 'assets/js/form-elements.js' %}></script>
+<script src={% static 'assets/js/select2.js' %}></script>
+
+<!-- INTERNAL TELEPHONE JS -->
+<script src={% static 'assets/plugins/telephoneinput/telephoneinput.js' %}></script>
+<script src={% static 'assets/plugins/telephoneinput/inttelephoneinput.js' %}></script>
+{% endblock js %}
