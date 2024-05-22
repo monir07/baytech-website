@@ -104,7 +104,7 @@ class Shift(SimplifyBaseModel):
 class Employee(BaseModel):
     device = models.ForeignKey(TADevice, on_delete=models.PROTECT, related_name='employee_device')
     device_id_no = models.IntegerField()
-    emp_id_no = models.CharField(max_length=50, unique=True)
+    emp_id_no = models.CharField(max_length=50)
     name = models.CharField(max_length=150)
     designation = models.CharField(max_length=150)
     section = models.ForeignKey(Section, on_delete=models.PROTECT, related_name='employee_list')
