@@ -75,6 +75,21 @@ class DeviceUpdateView(generic.UpdateView):
         context['breadcrumbs'] = breadcrumbs
         return context
 
+from zk import ZK, const
+
+def get_device_status(ip_addr):
+    zk = ZK(ip_addr, port=4370, timeout=5, password=0, force_udp=False, ommit_ping=False)
+    try:
+        # connect to device
+        conn = zk.connect()
+        if conn.enable_device():
+            return True
+        else:
+            return False
+    except Exception as e:
+        return False
+    finally:
+        pass
 
 class DeviceListView(generic.ListView):
     model = TADevice
@@ -89,7 +104,13 @@ class DeviceListView(generic.ListView):
     
     def get_queryset(self):
         queryset = super().get_queryset()
-
+        for item in queryset:
+            if get_device_status(item.ip_address):
+                item.device_status = True
+                item.save()
+            else:
+                item.device_status = False
+                item.save()
         query_param = self.request.GET.copy()
         search_param = query_param.get('query', None)
         if search_param:

@@ -117,7 +117,7 @@ class Employee(BaseModel):
     class Meta:
         ordering=('-created_at', )
         constraints = [
-            UniqueConstraint(fields=['device', 'emp_id_no'], name='unique_device_emp')
+            UniqueConstraint(fields=['device', 'device_id_no'], name='unique_device_emp')
         ]
 
 

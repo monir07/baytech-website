@@ -81,7 +81,7 @@ class AttendanceUpdateView(generic.UpdateView):
 class AttendanceListView(generic.ListView):
     model = Attendance
     context_object_name = 'items'
-    template_name = 'partials/datatable/base-list.html'
+    template_name = 'attendance/daily_list.html'
     title = "All Attendance List"
     queryset = Attendance.objects.all()
     paginate_by = 10
