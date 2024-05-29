@@ -17,7 +17,7 @@ def health_check(request: Request) -> Response:
 
 
 class HomePageView(TemplateView):
-    template_name = "home.html"
+    template_name = "index.html"
 
 
 from django.http import HttpResponse
