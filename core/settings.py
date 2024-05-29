@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 from datetime import timedelta
+from django.contrib.messages import constants as messages
 from core.load_vars import *
 load_dotenv()
 
@@ -265,4 +266,11 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=60),
     "UPDATE_LAST_LOGIN": True
+}
+
+# custom messages tag
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'success',
+    messages.ERROR: 'danger',
+    messages.WARNING: 'warning',
 }

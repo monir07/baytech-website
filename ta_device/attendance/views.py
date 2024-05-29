@@ -105,7 +105,7 @@ class AttendanceListView(generic.ListView):
         context['query_count'] = self.get_queryset().count()
         context['title'] = self.title
         # create_url and history_url for right side navigation button.
-        context['create_url'] = 'attendance_create'
+        # context['create_url'] = 'attendance_create'
         # context['history_url'] = 'device_create'
         breadcrumbs = [
             Breadcrumb(name='Dashboard', url='/'),

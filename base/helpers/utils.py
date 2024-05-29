@@ -23,8 +23,8 @@ def identifier_builder(table_name: str, prefix: str = None) -> str:
         seq_id = "1"
     random_suffix = random.randint(10, 99)
     if not prefix:
-        return seq_id.rjust(8, '0') + str(random_suffix)
-    return prefix + seq_id.rjust(8, '0') + str(random_suffix)
+        return seq_id.rjust(8, '0') 
+    return prefix + seq_id.rjust(8, '0') 
 
 
 def send_mail_pdf(subject=None, to=None, text_content=None, pdf_content=None):

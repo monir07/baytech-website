@@ -48,14 +48,15 @@ def get_data_from_device():
                     late_count = late_count,
                     created_by = User.objects.get(id='1'),
                     )
-            conn.clear_attendance()
+            # conn.clear_attendance()
             # print ("Attendance Data Cleared.")
             
         except Exception as e:
             print ("Process terminate : {}".format(e))
-        finally:
-            if conn:
-                conn.disconnect()
+        # finally:
+        #     pass
+            # if conn:
+            #     conn.disconnect()
 
 
 def start():

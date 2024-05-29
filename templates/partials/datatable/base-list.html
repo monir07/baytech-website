@@ -2,6 +2,10 @@
 {% load static %}
 {% load custom_tags %}
 
+{% block css %}
+    <!-- INTERNAL MULTI  NOTIFICATION CSS -->
+    <link href={% static 'assets/plugins/notify/css/jquery.growl.css' %} rel="stylesheet"/>
+{% endblock css %}
 
 {% block app_content %}
 <!-- PAGE -->
@@ -84,4 +88,16 @@
     </div>
 </div>    
 {% endblock app_content %}
+
+{% block js %}
+    <!--INTERNAL  POPOVER JS -->
+    <script src={% static 'assets/js/popover.js' %}></script>
+
+    <!-- INTERNAL NOTIFICATIONS JS -->
+    <script src={% static 'assets/plugins/notify/js/rainbow.js' %}></script>
+    <script src={% static 'assets/plugins/notify/js/jquery.growl.js' %}></script>
+    
+    <!-- ALERT NOTIFICATION CUSTOM -->
+    {% include "components/notifications.html" %}
+{% endblock js %}
 

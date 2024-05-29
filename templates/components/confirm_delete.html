@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block app_content %}
+    <div class="side-app">
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">{{ title|title }}</h1>
+                {% include "components/breadcrumb.html" %}
+            </div>
+            <div class="ml-auto pageheader-btn">
+                {% if list_url %}
+                <a href="{% url list_url %}" class="btn btn-secondary btn-icon text-white">
+                    <span>
+                        <i class="fe fe-list"></i>
+                    </span> List
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="m-0">Confirm Deletion</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Are you sure you want to delete the selected <span class="text-warning">"{{ details }}"</span>? All of the following objects and their related items will be deleted: </p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button class="btn btn-danger" type="submit">Yes, I'm sure</button>
+                            <a href="#" class="btn btn-primary" onclick="history.back()">No, take me back</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock app_content %}

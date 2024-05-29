@@ -23,16 +23,18 @@
 
     <!-- INTERNAL TELEPHONE CSS-->
     <link rel="stylesheet" href={% static 'assets/plugins/telephoneinput/telephoneinput.css' %} >
+
+    <!-- INTERNAL MULTI  NOTIFICATION CSS -->
+    <link href={% static 'assets/plugins/notify/css/jquery.growl.css' %} rel="stylesheet"/>
 {% endblock css %}
 
 {% block app_content %}
     <style type="text/css">
-        
-
         ::-webkit-calendar-picker-indicator {
             font-size: large;
             }
     </style>
+
     <div class="side-app">
         <!-- PAGE-HEADER -->
         <div class="page-header">
@@ -106,4 +108,14 @@
     <!-- INTERNAL TELEPHONE JS -->
     <script src={% static 'assets/plugins/telephoneinput/telephoneinput.js' %}></script>
     <script src={% static 'assets/plugins/telephoneinput/inttelephoneinput.js' %}></script>
+    
+    <!--INTERNAL  POPOVER JS -->
+    <script src={% static 'assets/js/popover.js' %}></script>
+
+    <!-- INTERNAL NOTIFICATIONS JS -->
+    <script src={% static 'assets/plugins/notify/js/rainbow.js' %}></script>
+    <script src={% static 'assets/plugins/notify/js/jquery.growl.js' %}></script>
+    
+    <!-- ALERT NOTIFICATION CUSTOM -->
+    {% include "components/notifications.html" %}
 {% endblock js %}
