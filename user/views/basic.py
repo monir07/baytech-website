@@ -24,7 +24,7 @@ User = get_user_model()
 
 class UserSignUpView(View, UnauthenticatedUserMixin):
     success_url = reverse_lazy("home")
-    template_name = "base/common/form.html"
+    template_name = "user/register.html"
 
     def get_context_data(self, **kwargs):
         if "form" not in kwargs:

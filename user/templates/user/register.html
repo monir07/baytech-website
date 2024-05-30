@@ -1,42 +1,58 @@
-{% extends 'basic.html' %}
-{% block title %} Registration {% endblock %}
-{% block SignUp %} active{% endblock SignUp %}
-{% block body %}
+{% extends "home.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 
-<div class="container pb-2" >
-    <div class="row" style="
-        box-shadow: 0 4px 50px 0 rgb(249 235 235 / 20%), 0 6px 50px 0 rgb(227 215 215 / 19%);background:none;">
-        <div class="col-lg-4" >
-            <div class="img">
-                <img src="{% static 'img/meet.svg' %}">
-            </div>
-        </div>
-        <div class="col-lg-7  pb-2" >
-            <h2 class="text-center border-bottom py-2" >Register New Account</h2>
-            <form method="post" action="{% url 'register' %}" >
-                {% csrf_token %}
-                {% include 'components/register_form.html' %}
-                <button type="submit" vlaue="submit" style="width:100%;" class="btn btn-primary ">Submit</button>
-            </form>
-            <p class="text-center pt-3"> Already Have Account? 
-            <a  style="text-align:center;" href="{% url 'login' %}">Login here</a>
-        </p>
-        </div>
-    </div>
-
-    
-</div>
-{% endblock %}
-
-
 {% block css %}
-.form-control:hover{
-    background-color: rgb(46, 23, 68);
-    color:aliceblue;
-}
-.form-control{
-   background:none;
-}
-{% endblock %}
+<!-- INTERNAL SINGLE-PAGE CSS -->
+<link href={% static 'assets/plugins/single-page/css/main.css' %} rel="stylesheet" type="text/css">
+{% endblock css %}
+
+<!-- PAGE -->
+{% block page %}
+<!-- PAGE -->
+<div class="page">
+	<div class="">
+		<!-- CONTAINER OPEN -->
+		<div class="col col-login mx-auto">
+			<div class="text-center">
+				<img src={% static 'assets/images/brand/logo-3.png' %} class="header-brand-img" alt="logo">
+			</div>
+		</div>
+		<div class="container-login100">
+			<div class="wrap-login100 p-6">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title">
+						Registration
+					</span>
+					{% csrf_token %}
+					{{ form|crispy }}
+					<label class="custom-control custom-checkbox mt-4">
+						<input type="checkbox" class="custom-control-input">
+						<span class="custom-control-label">Agree the <a href="terms.html">terms and policy</a></span>
+					</label>
+					<div class="container-login100-form-btn">
+						<a href="#" class="login100-form-btn btn-primary">
+							Register
+						</a>
+					</div>
+					<div class="text-center pt-3">
+						<p class="text-dark mb-0">Already have account?<a href="{% url "login" %}" class="text-primary ml-1">Sign In</a></p>
+					</div>
+					<div class=" flex-c-m text-center mt-3">
+						<p>Or</p>
+						<div class="social-icons">
+							<ul>
+								<li><a class="btn  btn-social btn-block btn-google"><i class="fa fa-google-plus"></i> Sign up with Google</a></li>
+								<li><a class="btn  btn-social btn-block mt-2 btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- CONTAINER CLOSED -->
+	</div>
+</div>
+<!-- END PAGE -->
+{% endblock page %}
+<!-- End PAGE -->
