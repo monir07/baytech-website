@@ -1,10 +1,106 @@
 {% load static %}
 
-<footer class="footer">
-    <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-md-12 col-sm-12 text-center">
-                Copyright © 2024 <a href="#">TAM</a>. Designed by <a href="#"> Technocraft Innovations Ltd </a> All rights reserved.
+<footer class="bg-secondary footer-style14 pt-0">
+    <div class="border-bottom border-color-light-white mb-6 mb-md-8 mb-lg-9">
+        <div class="container">
+            <div class="top-inner d-flex justify-content-lg-between justify-content-center align-items-center position-relative">
+                <ul class="list-unstyled d-lg-flex d-none mb-0">
+                    <li><a href="home-1.html" class="text-white me-4 me-xl-5">Home</a></li>
+                    <li><a href="about.html" class="text-white me-4 me-xl-5">About us</a></li>
+                    <li><a href="services.html" class="text-white mb-0">Service</a></li>
+                </ul>
+                <div class="text-center logos footer-logo">
+                    <a href="index.html">
+                        <img src="{% static 'assets/img/logos/logo-footer.png' %}" class="mx-auto" alt="...">
+                    </a>
+                </div>
+                <ul class="list-unstyled d-lg-flex d-none mb-0">
+                    <li><a href="contact.html" class="text-white me-4 me-xl-5">Contact us</a></li>
+                    <li><a href="portfolio3.html" class="text-white me-4 me-xl-5">Portfolio</a></li>
+                    <li><a href="blog-grid.html" class="text-white mb-0">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-6 pb-md-8 pb-lg-9">
+        <div class="row mt-n2-6">
+            <div class="col-md-6 col-lg-5 mt-2-6">
+                <div class="pe-md-2-9 pe-xl-7">
+                    <div class="section-title02 mb-1-6 mb-md-1-9">
+                        <h3 class="mb-0 text-white h4 font-weight-700">About Us</h3>
+                    </div>
+                    <p class="text-white lead mb-0">At Crizal, we’re a dynamic digital marketing agency dedicated to transforming your brand's into a powerful force.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mt-2-6">
+                <div class="px-md-3">
+                    <div class="section-title02 mb-1-6 mb-md-1-9">
+                        <h3 class="mb-0 text-white h4 font-weight-700">Quick Contact</h3>
+                    </div>
+                    <p class="email"><a class="display-29 display-md-28 display-xl-27" href="mailto:info@yourdomain.com">info@yourdomain.com</a></p>
+                    <p class="phone mb-0"><a class="display-26 display-md-25 display-xl-24" href="tel:+442056581823">+44 205-658-1823</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mt-2-6">
+                <div class="ps-xl-1-9">
+                    <div class="section-title02 mb-1-6 mb-md-1-9">
+                        <h3 class="mb-0 text-white h4 font-weight-700">Subscribe</h3>
+                    </div>
+                    <form class="quform" action="https://crizal.websitelayout.net/quform/newsletter-two.php" method="post" enctype="multipart/form-data" onclick="">
+
+                        <div class="quform-elements">
+
+                            <div class="row">
+
+                                <!-- Begin Text input element -->
+                                <div class="col-md-12 mb-3">
+                                    <div class="quform-element">
+                                        <div class="quform-input">
+                                            <input class="form-control min-height-54" id="email_address" type="text" name="email_address" placeholder="Subscribe with us" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Text input element -->
+
+                                <!-- Begin Submit button -->
+                                <div class="col-md-12">
+                                    <div class="quform-submit-inner">
+                                        <button class="butn white-hover border-0 w-100" type="submit">Subscribe</button>
+                                    </div>
+                                    <div class="quform-loading-wrap text-center"><span class="quform-loading"></span></div>
+                                </div>
+                                <!-- End Submit button -->
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-4 border-top border-color-light-white text-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 order-2 order-md-1">
+                    <div class="text-center text-md-start mt-1-9 mt-md-0">
+                        <p class="d-inline-block text-white mb-0">&copy; <span class="current-year"></span> Crizal Powered by <a href="home-corporate-02.html#!" class="text-primary text-white-hover">Chitrakoot Web</a></p>
+                    </div>
+                </div>
+                <div class="col-md-5 order-1 order-md-2">
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        <div class="footer-social-icons">
+                            <ul class="ps-0">
+                                <li><a href="home-corporate-02.html#!"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="home-corporate-02.html#!"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="home-corporate-02.html#!"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="home-corporate-02.html#!"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="home-corporate-02.html#!"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

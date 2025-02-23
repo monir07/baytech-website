@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block sidebar %}
+	{% include "sidebar.html" %}
+{% endblock sidebar %}
+
+<!-- app-content -->
+{% block app_content %}
+<div class="side-app">
+	<!-- PAGE-HEADER -->
+	<div class="page-header">
+		<div>
+			<h1 class="page-title">Hi! Welcome To Dashboard</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+			</ol>
+		</div>
+		<div class="ml-auto pageheader-btn">
+			<a href="#" class="btn btn-primary btn-icon text-white mr-2">
+				<span>
+					<i class="fa fa-fax"></i>
+				</span> Add Device
+			</a>
+			<a href="#" class="btn btn-secondary btn-icon text-white">
+				<span>
+					<i class="fa fa-plus"></i>
+				</span> Add User
+			</a>
+		</div>
+	</div>
+	<!-- PAGE-HEADER END -->
+
+	<!-- ROW -->
+	<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+			<div class="card bg-primary img-card box-primary-shadow">
+				<div class="card-body">
+					<div class="d-flex">
+						<div class="text-white">
+							<h2 class="mb-0 number-font">1450</h2>
+							<p class="text-white mb-0">Total Employee </p>
+						</div>
+						<div class="ml-auto"> <i class="fa fa-users text-white fs-30 mr-2 mt-2"></i> </div>
+					</div>
+				</div>
+			</div>
+		</div><!-- COL END -->
+		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+			<div class="card bg-secondary img-card box-secondary-shadow">
+				<div class="card-body">
+					<div class="d-flex">
+						<div class="text-white">
+							<h2 class="mb-0 number-font">950</h2>
+							<p class="text-white mb-0">Total Attendance</p>
+						</div>
+						<div class="ml-auto"> <i class="fa fa-address-book text-white fs-30 mr-2 mt-2"></i> </div>
+					</div>
+				</div>
+			</div>
+		</div><!-- COL END -->
+		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+			<div class="card  bg-success img-card box-success-shadow">
+				<div class="card-body">
+					<div class="d-flex">
+						<div class="text-white">
+							<h2 class="mb-0 number-font">18</h2>
+							<p class="text-white mb-0">Total Devices</p>
+						</div>
+						<div class="ml-auto"> <i class="fa fa-microchip text-white fs-30 mr-2 mt-2"></i> </div>
+					</div>
+				</div>
+			</div>
+		</div><!-- COL END -->
+		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+			<div class="card bg-info img-card box-info-shadow">
+				<div class="card-body">
+					<div class="d-flex">
+						<div class="text-white">
+							<h2 class="mb-0 number-font">25</h2>
+							<p class="text-white mb-0">Total Holiday</p>
+						</div>
+						<div class="ml-auto"> <i class="fa fa-cart-plus text-white fs-30 mr-2 mt-2"></i> </div>
+					</div>
+				</div>
+			</div>
+		</div><!-- COL END -->
+	</div>
+	<!-- ROW -->
+</div>
+{% endblock app_content %}
+<!-- app-content -->

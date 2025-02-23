@@ -153,15 +153,22 @@ LOGIN_URL = '/users/login/'
 PASSWORD_CHANGE_URL = '/users/login/'
 LOGOUT_URL = '/users/login/'
 ACCESSIBLE_URLS = [LOGOUT_URL, PASSWORD_CHANGE_URL]
+
+# Static Files settings
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-MEDIA_URL= '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional directories for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Global static files
+]
+
+# Media files (user-uploaded files)
+MEDIA_URL = '/media/'  # URL prefix for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory for storing media files
 
 MAX_PASSWORD_AGE = 2592000 # 30 days in seconds
-# Media settings
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"

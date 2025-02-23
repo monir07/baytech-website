@@ -1,3 +1,0 @@
-(function($) {
-	$('.content').richText();
-})(jQuery);

@@ -1,94 +1,105 @@
-{% extends "base.html" %}
+<!doctype html>
 {% load static %}
-{% block title %}Home{% endblock title %}
+<html lang="en">
+	<head>
+	{% block head %}
+		{% block meta %}
+		<!-- metas -->
+		<meta charset="utf-8">
+		<meta name="author" content="Chitrakoot Web" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="Multipurpose Responsive Template + Admin" />
+		<meta name="description" content="Crizal - Multipurpose Responsive Template + Admin" />
+		{% endblock meta %}
 
-{% block sidebar %}
-	{% include "sidebar.html" %}
-{% endblock sidebar %}
+		<!-- FAVICON -->
+		<link rel="shortcut icon" href="{% static 'assets/img/logos/favicon.png' %}">
+		<link rel="apple-touch-icon" href="{% static 'assets/img/logos/apple-touch-icon-57x57.png' %}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/logos/apple-touch-icon-72x72.png' %}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/logos/apple-touch-icon-114x114.png' %}">
+		<!-- TITLE -->
+		<title>Bay-tech | {% block title %}Home{% endblock title %}</title>
+		{% block stylesheets %}
+			<!-- CSS -->
+			{% include "components/css.html" %}
+		{% endblock stylesheets %}
+		{% block css %}{% endblock css %}
+	{% endblock head %}
+	</head>
 
-<!-- app-content -->
-{% block app_content %}
-<div class="side-app">
-	<!-- PAGE-HEADER -->
-	<div class="page-header">
-		<div>
-			<h1 class="page-title">Hi! Welcome To Dashboard</h1>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-			</ol>
+	<body>
+	{% block body %}
+		<!-- PAGE LOADING -->
+    	<div id="preloader"></div>
+		
+
+		{% block main_wrapper %}
+		<!-- MAIN WRAPPER -->
+		<div class="main-wrapper">
+			<!-- HEADER -->
+			{% include "components/header.html" %}
+			
+			<!-- PAGE-CONTENT -->
+			{% block page_content %}
+				
+				<!-- BANNER -->
+				{% include "components/banner.html" %}
+
+				<!-- ABOUT -->
+				{% include "components/about.html" %}
+
+				<!-- COUNTER -->
+				{% include "components/counter.html" %}
+
+				<!-- SERVICE -->
+				{% include "components/service.html" %}
+
+				<!-- TEAM -->
+				{% include "components/team.html" %}
+
+				<!-- EVENTS -->
+				{% include "components/blog.html" %}
+
+				<!-- PORTFOLIO -->
+				{% include "components/portfolio.html" %}
+				
+				<!-- CLIENTS -->
+				{% include "components/clients.html" %}
+				
+				<!-- TESTIMONIAL-->
+				{% include "components/feedback.html" %}
+
+				<!-- FAQ -->
+				<!-- {% include "components/faq.html" %} -->
+
+				<!-- EXTRA SECTION -->
+				{% include "components/extra_section.html" %}
+
+				
+
+				<!-- CONTACT US -->
+				{% include "components/contact_us.html" %}
+			
+			{% endblock page_content %}
+			<!-- END PAGE CONTENT -->
+
+			{% block footer %}
+				<!-- FOOTER -->
+				{% include "components/footer.html" %}
+			{% endblock footer %}
 		</div>
-		<div class="ml-auto pageheader-btn">
-			<a href="#" class="btn btn-primary btn-icon text-white mr-2">
-				<span>
-					<i class="fa fa-fax"></i>
-				</span> Add Device
-			</a>
-			<a href="#" class="btn btn-secondary btn-icon text-white">
-				<span>
-					<i class="fa fa-plus"></i>
-				</span> Add User
-			</a>
-		</div>
-	</div>
-	<!-- PAGE-HEADER END -->
+		{% endblock main_wrapper %}
+		
+		<!-- SCROLL TO TOP -->
+		<div class="scroll-top-percentage"><span id="scroll-value"></span></div>
+		
+		{% block javascripts %}
+		<!-- JAVA SCRIPT -->
+			{% include "components/js.html" %}
+		{% endblock javascripts %}
+		{% block js %}{% endblock js %}
+	{% endblock body %}
+	</body>
 
-	<!-- ROW -->
-	<div class="row">
-		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-			<div class="card bg-primary img-card box-primary-shadow">
-				<div class="card-body">
-					<div class="d-flex">
-						<div class="text-white">
-							<h2 class="mb-0 number-font">1450</h2>
-							<p class="text-white mb-0">Total Employee </p>
-						</div>
-						<div class="ml-auto"> <i class="fa fa-users text-white fs-30 mr-2 mt-2"></i> </div>
-					</div>
-				</div>
-			</div>
-		</div><!-- COL END -->
-		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-			<div class="card bg-secondary img-card box-secondary-shadow">
-				<div class="card-body">
-					<div class="d-flex">
-						<div class="text-white">
-							<h2 class="mb-0 number-font">950</h2>
-							<p class="text-white mb-0">Total Attendance</p>
-						</div>
-						<div class="ml-auto"> <i class="fa fa-address-book text-white fs-30 mr-2 mt-2"></i> </div>
-					</div>
-				</div>
-			</div>
-		</div><!-- COL END -->
-		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-			<div class="card  bg-success img-card box-success-shadow">
-				<div class="card-body">
-					<div class="d-flex">
-						<div class="text-white">
-							<h2 class="mb-0 number-font">18</h2>
-							<p class="text-white mb-0">Total Devices</p>
-						</div>
-						<div class="ml-auto"> <i class="fa fa-microchip text-white fs-30 mr-2 mt-2"></i> </div>
-					</div>
-				</div>
-			</div>
-		</div><!-- COL END -->
-		<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-			<div class="card bg-info img-card box-info-shadow">
-				<div class="card-body">
-					<div class="d-flex">
-						<div class="text-white">
-							<h2 class="mb-0 number-font">25</h2>
-							<p class="text-white mb-0">Total Holiday</p>
-						</div>
-						<div class="ml-auto"> <i class="fa fa-cart-plus text-white fs-30 mr-2 mt-2"></i> </div>
-					</div>
-				</div>
-			</div>
-		</div><!-- COL END -->
-	</div>
-	<!-- ROW -->
-</div>
-{% endblock app_content %}
-<!-- app-content -->
+</html>
