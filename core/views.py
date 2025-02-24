@@ -24,12 +24,12 @@ from django.http import HttpResponse
 from django.template import loader
 
 
-def reference_html(request):
+def reference_page(request):
     context = {}
     # The template to be loaded as per gentelella.
     # All resource paths for gentelella end in .html.
 
     # Pick out the html file name from the url. And load that template.
     load_template = request.path.split('/')[-1]
-    template = loader.get_template('reference/' + load_template)
+    template = loader.get_template('pages/' + load_template)
     return HttpResponse(template.render(context, request))

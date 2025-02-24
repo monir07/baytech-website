@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.urls.conf import re_path
-from core.views import health_check, HomePageView, reference_html
+from core.views import health_check, HomePageView, reference_page
 from core.settings import DEBUG
 from django.contrib import admin
 from rest_framework import permissions
@@ -31,7 +31,7 @@ v1_patterns = [
 
     
 urlpatterns = [
-    re_path(r'^.*\.html', reference_html, name='ref_template'),
+    re_path(r'^.*\.html', reference_page, name='ref_page'),
     path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('users/', include(user_urls)),
