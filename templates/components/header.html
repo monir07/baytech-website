@@ -64,47 +64,76 @@
                             <!-- menu area -->
                             <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
                                 <li><a href="{% url 'home' %}">Home</a></li>
-                                <li><a href="{% url 'home' %}">About Us</a>
-                                    <ul>
-                                        <li><a href="about_us.html">About Us</a></li>
-                                        <li><a href="facilities.html">Our Facilities</a></li>
-                                        <li><a href="management.html">Senior Management</a></li>
-                                        <li><a href="team_members.html">Our Team Members</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#!">Business</a>
-                                    <ul>
-                                        <li><a href="ship_building.html">Ship Building & Repairing</a></li>
-                                        <li><a href="ship_design.html">Ship Design & Consultancy</a></li>
-                                        <li><a href="ndt_engineering.html">NDT & Engineering Services</a></li>
-                                        <li><a href="dharla_logistics.html">Dharla Logistics (Pvt.) Limited </a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="home-corporate-02.html#!">Projects</a>
-                                    <ul>
-                                        <li><a href="home-corporate-02.html#!">Ongoing</a></li>
-                                        <li><a href="loading-bar-banner.html">Completed</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="home-corporate-02.html#!">Notice</a>
+                                <li><a href="#id_about_us">About Us</a></li>
+                                <li><a href="#id_business">Business</a></li>
+                                <li><a href="#id_management">Management</a></li>
+                                <li><a href="#id_projects">Projects</a></li>
+                                <li><a href="#id_news">News</a></li>
+                                <li><a href="#id_contact">Contact Us</a></li>
+                                <li><a href="#!">Notice</a>
                                     <ul>
                                         <li><a href="home-corporate-02.html#!">Office Order</a></li>
                                         <li><a href="home-corporate-02.html#!">NOC</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="home-corporate-02.html#!">Carriers</a>
-                                    <ul>
-                                        <li><a href="home-corporate-02.html#!">Available Job</a></li>
-                                        <li><a href="home-corporate-02.html#!">Online Application</a></li>
+                                <li><a href="#">Mega Menu</a>
+                                    <ul class="row megamenu">
+                                        <li class="col-lg-3"> <!--1 of 1 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">About Us</span>
+                                            <ul>
+                                                <li><a href="about_us.html"><i class="fab fa-wpforms me-2"></i>About Us</a></li>
+                                                <li><a href="facilities.html"><i class="fab fa-wpforms me-2"></i>Our Facilities</a></li>
+                                                <li><a href="team_members.html"><i class="fab fa-wpforms me-2"></i>Our Team Members</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--1 of 2 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Business</span>
+                                            <ul>
+                                                <li><a href="service_details.html"><i class="far fa-building me-2"></i>Ship Building & Repairing</a></li>
+                                                <li><a href="ship_design.html"><i class="far fa-building me-2"></i>Ship Design & Consultancy</a></li>
+                                                <li><a href="ndt_engineering.html"><i class="far fa-building me-2"></i>NDT & Engineering Services</a></li>
+                                                <li><a href="dharla_logistics.html"><i class="far fa-building me-2"></i>Dharla Logistics (Pvt.) Ltd </a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--1 of 3 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Projects</span>
+                                            <ul>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-list-alt me-2"></i>Ongoing New Building</a></li>
+                                                <li><a href="home-corporate-02.html#!"><i class="far fa-list-alt me-2"></i>Ongoing Repairs</a></li>
+                                                <li><a href="loading-bar-banner.html"><i class="fas fa-th-list me-2"></i>Completed Projects</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--1 of 4 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Carriers</span>
+                                            <ul>
+                                                <li><a href="home-corporate-02.html#!"><i class="far fa-clipboard me-2"></i>Available Job</a></li>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-globe-asia me-2"></i>Online Application</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--2 of 1 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">News</span>
+                                            <ul>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-newspaper me-2"></i>News & Insights</a></li>
+                                                <li><a href="home-corporate-02.html#!"><i class="far fa-file-image me-2"></i>Photo Gallery</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--2 of 2 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Notice</span>
+                                            <ul>
+                                                <li><a href="home-corporate-02.html#!"><i class="far fa-file-pdf me-2"></i>Office Orders</a></li>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-file-pdf me-2"></i>NOC</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3"> <!--2 of 3 -->
+                                            <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Contact Us</span>
+                                            <ul>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-pen-square me-2"></i>Contact Form</a></li>
+                                                <li><a href="home-corporate-02.html#!"><i class="fas fa-map-marker-alt me-2"></i>Location Map</a></li>
+                                            </ul>
+                                        </li>
+                                        
                                     </ul>
                                 </li>
-                                <li><a href="home-corporate-02.html#!">News</a>
-                                    <ul>
-                                        <li><a href="home-corporate-02.html#!">News & Insights</a></li>
-                                        <li><a href="home-corporate-02.html#!">Photo Gallery</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Contact Us</a></li>
                             </ul>
                             <!-- end menu area -->
 
