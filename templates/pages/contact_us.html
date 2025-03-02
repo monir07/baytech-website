@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Contact Us{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+    <!-- PAGE TITLE-->
+    <section class="page-title-section bg-img cover-background secondary-overlay" data-overlay-dark="9">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Contact Us</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTRACT US FORM -->
+    {% include "components/contact_us.html" %}
+{% endblock page_content %}
+<!-- page-content -->

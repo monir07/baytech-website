@@ -1,0 +1,49 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}NOC{% endblock title %}
+
+
+
+
+<!-- page-content -->
+{% block page_content %}
+	<!-- TABLES  -->
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="h1 lh-1">No Objection Certificate (NOC)</h2>
+            </div>
+            <div class="row position-relative">
+                <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Publish Date</th>
+                                        <th>Description</th>
+                                        <th>Photo</th>
+                                        <th>Pdf</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Lorem ipsum dollar sign ammet</td>
+                                        <td>Photo</td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PAGINATION START FROM HERE -->
+            {% include "components/pagination.html" %}
+        </div>
+    </section>
+{% endblock page_content %}
+<!-- page-content -->
+

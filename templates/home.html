@@ -19,7 +19,7 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/logos/apple-touch-icon-72x72.png' %}">
 		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/logos/apple-touch-icon-114x114.png' %}">
 		<!-- TITLE -->
-		<title>Bay-tech | {% block title %}Home{% endblock title %}</title>
+		<title>{% block title %}Home{% endblock title %} | Bay-tech </title>
 		{% block stylesheets %}
 			<!-- CSS -->
 			{% include "components/css.html" %}
@@ -78,9 +78,6 @@
 
 				<!-- CONTACT US -->
 				{% include "components/contact_us.html" %}
-
-				<!-- GOOGLE MAP -->
-				{% include "components/maps.html" %}
 			
 			{% endblock page_content %}
 			<!-- END PAGE CONTENT -->
