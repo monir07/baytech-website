@@ -1,0 +1,62 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}News{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+    
+    <!-- BLOG -->
+    <section class="blogs">
+        <div class="container">
+            <div class="row">
+                <!--  start blog left-->
+                <div class="col-lg-12 mb-2-9 mb-lg-0">
+                    <div class="posts pe-lg-1-6 pe-xl-1-9">
+
+                        <!--  start post-->
+                        <div class="post border-top-radius-6">
+                            <div class="post-img border-top-radius-6">
+                                <img src="{% static 'assets/img/blog/list-1.jpg' %}" alt="..." class="border-top-radius-6">
+                            </div>
+                            <div class="content bg-light border-bottom-radius-6">
+                                <div class="blog-list-simple-text border-bottom border-color-light-black pb-0 mb-4">
+                                    <h2 class="mb-2">Powerful tool for your customer</h2>
+                                    <ul class="meta ps-0">
+                                        <li>
+                                            <i class="fa fa-user text-primary me-2"></i> Admin
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-folder-open text-primary me-2"></i> Business
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-calendar-alt text-primary me-2"></i> January 10, <span class="current-year"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="post-cont">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+
+                                    <p>We have worked with globally & achieved a huge positive vibes. Provide a comprehensive list of common tax deductions available to small business owners</p>
+                                    
+                                    <div class="mb-1-6">
+                                        <blockquote class="common-blockquote border-radius-6 text-center">
+                                            <p class="title-font">Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.</p>
+                                            <cite>– Albert Schweitzer</cite>
+                                        </blockquote>
+                                    </div>
+
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  start post-->                        
+                    </div>
+                </div>
+                <!--  end blog left-->
+            </div>
+        </div>
+    </section>
+    
+{% endblock page_content %}
+<!-- page-content -->

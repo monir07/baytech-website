@@ -1,0 +1,181 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Photo{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+    <!-- PAGE TITLE-->
+    <section class="page-title-section bg-img cover-background secondary-overlay" data-overlay-dark="9">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Photo Gallery</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PROJECT -->
+    <section>
+        <div class="container-fluid px-xl-6 px-xxl-13">
+            <div class="row">
+                <div class="link-style-hover filtering col-sm-12 text-center">
+                    <span data-filter='*' class="active">All</span>
+                    <span data-filter='.selected'>selected</span>
+                    <span data-filter='.digital'>digital</span>
+                    <span data-filter='.branding'>branding</span>
+                    <span data-filter='.web'>web</span>
+                </div>
+            </div>
+            <div class="row portfolio-gallery-isotope">
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 selected" data-src="{% static 'assets/img/portfolio/portfolio-23.jpg' %}" data-sub-html="<h4 class='text-white'>Investment Project</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-23.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Investment Project</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 digital" data-src="{% static 'assets/img/portfolio/portfolio-24.jpg' %}" data-sub-html="<h4 class='text-white'>Investment Project</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-24.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Investment Planning</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 branding digital" data-src="{% static 'assets/img/portfolio/portfolio-25.jpg' %}" data-sub-html="<h4 class='text-white'>Online Consulting</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-25.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Online Consulting</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 web" data-src="{% static 'assets/img/portfolio/portfolio-26.jpg' %}" data-sub-html="<h4 class='text-white'>Saving Investments</h4><p>Business Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-26.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Saving Investments</a></h5>
+                            <span class="text-uppercase display-31 text-white">Business Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 selected" data-src="{% static 'assets/img/portfolio/portfolio-27.jpg' %}" data-sub-html="<h4 class='text-white'>Financial Analysis</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-27.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Financial Analysis</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 digital" data-src="{% static 'assets/img/portfolio/portfolio-28.jpg' %}" data-sub-html="<h4 class='text-white'>Business Plan</h4><p>Business Consulting</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-28.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Business Plan</a></h5>
+                            <span class="text-uppercase display-31 text-white">Business Consulting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 branding" data-src="{% static 'assets/img/portfolio/portfolio-29.jpg' %}" data-sub-html="<h4 class='text-white'>Financial Analysis</h4><p>Trading</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-29.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Financial Analysis</a></h5>
+                            <span class="text-uppercase display-31 text-white">Trading</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 web" data-src="{% static 'assets/img/portfolio/portfolio-30.jpg' %}" data-sub-html="<h4 class='text-white'>Business Consulting</h4><p>Business Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-30.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Business Consulting</a></h5>
+                            <span class="text-uppercase display-31 text-white">Business Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 digital selected" data-src="{% static 'assets/img/portfolio/portfolio-31.jpg' %}" data-sub-html="<h4 class='text-white'>Corporate Audit</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-31.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Corporate Audit</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 branding" data-src="{% static 'assets/img/portfolio/portfolio-32.jpg' %}" data-sub-html="<h4 class='text-white'>Customer Strategy</h4><p>Marketing</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-32.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Customer Strategy</a></h5>
+                            <span class="text-uppercase display-31 text-white">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4 web" data-src="{% static 'assets/img/portfolio/portfolio-33.jpg' %}" data-sub-html="<h4 class='text-white'>Global Consumer</h4><p>Finance Plan</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-33.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Global Consumer</a></h5>
+                            <span class="text-uppercase display-31 text-white">Finance Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 mt-4" data-src="{% static 'assets/img/portfolio/portfolio-34.jpg' %}" data-sub-html="<h4 class='text-white'>Data Analytics</h4><p>Startup</p>">
+                    <div class="card card-style21 border-0">
+                        <div class="img-hover">
+                            <img src="{% static 'assets/img/portfolio/portfolio-34.jpg' %}" alt="...">
+                        </div>
+                        <div class="project-icon"><a href="project-detail.html" class="portfolio-link"><i class="ti-arrow-top-right text-white display-22"></i></a></div>
+                        <div class="card-body">
+                            <h5 class="mb-0"><a href="project-detail.html" class="text-white">Data Analytics</a></h5>
+                            <span class="text-uppercase display-31 text-white">Startup</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+    
+{% endblock page_content %}
+<!-- page-content -->
