@@ -11,6 +11,7 @@ from user import urls_api as user_api
 from django.conf import settings
 from django.conf.urls.static import static
 from page import urls as page_urls
+from notice import urls as notice_urls
 
 
 schema_view = get_schema_view(
@@ -42,6 +43,9 @@ urlpatterns = [
 
     # page urls
     path('', include(page_urls)),
+
+    # notice urls
+    path('notice/', include(notice_urls)),
 ]
 
 urlpatterns += [path('api-auth/', include('rest_framework.urls')),]

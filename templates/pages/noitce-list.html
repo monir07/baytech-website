@@ -25,13 +25,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for item in items %}
                                     <tr>
-                                        <td>1</td>
-                                        <td>Lorem ipsum dollar sign ammet</td>
-                                        <td>
-                                            <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                        <td>{{ item.publish_date|date:'d-m-Y' }}</td>
+                                        <td>{{ item.subject|safe }}</td>
+                                        <td> 
+                                            <a href="{% url 'notice_details' item.pk %}">
+                                                <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                            </a>
                                         </td>
                                     </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>

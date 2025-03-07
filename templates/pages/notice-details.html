@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Notice-Details{% endblock title %}
+
+
+
+
+<!-- page-content -->
+{% block page_content %}
+    <section>
+        <div class="container">
+
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+
+                    <div class="section-heading left">
+                        <h2 class="h1 lh-1">{{ item.subject }}</h2>
+                    </div>
+
+                    <p>{{ item.body|safe }}</p>
+
+                    
+                    <div class="border-bottom mb-3 mb-lg-4 pb-3 pb-lg-4">
+                        
+                    </div>
+
+                    <div class="w-100">
+                        <img src="{{ item.initial_sign }}" alt="..." class="align-top">
+                        <p class="mb-0"><span class="font-weight-700 d-block">{{ item.initial_by }}</span>{{ item.initial_designation|safe }}</p>
+                        <!-- <div class="float-end  mt-2">
+                            <img src="img/content/signature-black.png" alt="..." class="align-top">
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock page_content %}
+<!-- page-content -->
+

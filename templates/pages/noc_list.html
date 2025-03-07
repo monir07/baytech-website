@@ -21,19 +21,21 @@
                                     <tr>
                                         <th>Publish Date</th>
                                         <th>Description</th>
-                                        <th>Photo</th>
                                         <th>Pdf</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for item in items %}
                                     <tr>
-                                        <td>1</td>
-                                        <td>Lorem ipsum dollar sign ammet</td>
-                                        <td>Photo</td>
+                                        <td>{{ item.publish_date|date:'d-m-Y' }}</td>
+                                        <td>{{ item.description }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                            <a href="/media/{{ item.attachment }}">
+                                                <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                            </a>
                                         </td>
                                     </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
