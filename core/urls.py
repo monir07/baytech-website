@@ -10,6 +10,7 @@ from user import urls as user_urls
 from user import urls_api as user_api
 from django.conf import settings
 from django.conf.urls.static import static
+from page import urls as page_urls
 
 
 schema_view = get_schema_view(
@@ -38,6 +39,9 @@ urlpatterns = [
     path('api/', include([
         path('v1.0/', include(v1_patterns))
     ])),
+
+    # page urls
+    path('', include(page_urls)),
 ]
 
 urlpatterns += [path('api-auth/', include('rest_framework.urls')),]
