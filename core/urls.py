@@ -55,9 +55,9 @@ if DEBUG:
         re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     ]
 
-admin.site.site_header = "TAM Admin"
-admin.site.site_title = "TAM Admin Portal"
-admin.site.index_title = "Welcome to TAM"
+admin.site.site_header = "Bay-Tech Admin"
+admin.site.site_title = "Bay-Tech Admin Portal"
+admin.site.index_title = "Welcome to Bay-Tech Group"
 
 handler400 = 'base.views.custom_error_400'
 handler403 = 'base.views.custom_error_403'
