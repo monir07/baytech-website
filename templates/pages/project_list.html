@@ -1,6 +1,6 @@
 {% extends "home.html" %}
 {% load static %}
-{% block title %}About Us{% endblock title %}
+{% block title %}Project List{% endblock title %}
 
 
 <!-- page-content -->
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>On Going Project List</h1>
+                    <h1>{{ title|title }}</h1>
                 </div>
             </div>
         </div>
@@ -20,105 +20,33 @@
     <section>
         <div class="container">
             <div class="row mt-n1-9">
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/pro-6.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Quality Services</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="project_details.html">Learn More</a>
+                {% for item in items %}
+                    <div class="col-lg-6 mt-1-9">
+                        <div class="case-block">
+                            <div class="row align-items-xl-center">
+                                <div class="col-md-6">
+                                    <div class="bg-img cover-background min-height-250 h-100" data-background="/media/{{ item.project_photo }}"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="case-block-inner">
+                                        <h4 class="h5">{{ item.proejct_name }}</h4>
+                                        <p>
+                                            Length: {{ item.length }}</br>
+                                            Breadth: {{ item.breadth }}</br>
+                                            Depth: {{ item.depth }}</br> 
+                                            Draught: {{ item.draft }}</br> 
+                                        </p>
+                                        <a href="{% url 'project_details' item.pk %}">Learn More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/pro-7.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Research Financial</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="cases.html#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/pro-8.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Quality Services</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="cases.html#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/pro-9.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Research Financial</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="cases.html#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/project-3b.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Customer Experience</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="cases.html#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-1-9">
-                    <div class="case-block">
-                        <div class="row align-items-xl-center">
-                            <div class="col-md-6">
-                                <div class="bg-img cover-background min-height-250 h-100" data-background="{% static 'assets/img/projects/project-4b.jpg' %}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="case-block-inner">
-                                    <h4 class="h5">Market Analysis</h4>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat reprehenderit.</p>
-                                    <a href="cases.html#!">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <!-- PAGINATION START FROM HERE -->
-            {% include "components/pagination.html" %}
+            <small>Total {{ query_count|length }} Projects</small>
+            {% include 'components/pagination_copy.html' with items=page_obj %}
         </div>
     </section>
 {% endblock page_content %}

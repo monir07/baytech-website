@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>News & Insights</h1>
+                    <h1>{{ title|title }}</h1>
                 </div>
             </div>
         </div>
@@ -19,197 +19,25 @@
     <!-- NEWS LIST -->
     <section>
         <div class="container">
-        
             <div class="row mt-n2-2">
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">April 02, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="news_details.html">Powerful tool for your customer</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="news_details.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-01.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>Rona Lewis</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>38
-                                </a>
-
+                {% for item in items %}
+                    <div class="col-md-6 col-lg-4 mt-2-2">
+                        <article class="card blog-card">
+                            <div class="card-img"><img src="/media/{{ item.cover_photo }}" alt="..."></div>
+                            <div class="card-body">
+                                <div class="d-block text-muted mb-2 small">{{ item.publish_date }}</div>
+                                <h3 class="h5 mb-3"><a href="{% url 'news_insight_details' item.pk %}">{{ item.head_line }}</a></h3>
+                                <p>{{ item.body|truncatechars:50 }}</p>
+                                <span class="read-more font-weight-600 small"><a href="{% url 'news_insight_details' item.pk %}" class="text-primary text-secondary-hover">read more...</a></span>
                             </div>
-
-                        </div>
-
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-2.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">April 02, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="blog-post.html">Growth your business strategy</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="blog-post.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-02.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>James Batie</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>35
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-3.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">March 30, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="blog-post.html">Digital service marketing agency</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="blog-post.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-03.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>Clani Curry</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>32
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-4.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">March 18, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="blog-post.html">Business adviser analyzing financial</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="blog-post.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-04.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>Jonal Adams</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>30
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-5.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">March 02, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="blog-post.html">The progress work of the company</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="blog-post.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-05.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>Monique Yip</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>28
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4 mt-2-2">
-                    <article class="card blog-card">
-                        <div class="card-img"><img src="{% static 'assets/img/blog/blog-6.jpg' %}" alt="..."></div>
-                        <div class="card-body">
-                            <div class="d-block text-muted mb-2 small">February 26, <span class="current-year"></span></div>
-                            <h3 class="h5 mb-3"><a href="blog-post.html">The business woman hard work</a></h3>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                            <span class="read-more font-weight-600 small"><a href="blog-post.html" class="text-primary text-secondary-hover">read more...</a></span>
-                        </div>
-                        <div class="card-footer">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{% static 'assets/img/avatar/avatar-06.jpg' %}" class="rounded-circle sm-avatar" alt="...">
-
-                                    <div class="ms-3">
-                                        <span class="small"><span class="font-weight-bold">By: </span>Lynn Smith</span>
-                                    </div>
-                                </div>
-
-                                <a href="blog-grid.html#!">
-                                    <i class="ti-comment-alt me-2 align-middle"></i>22
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                </div>
+                        </article>
+                    </div>
+                {% endfor %}
             </div>
+            
             <!-- PAGINATION START FROM HERE -->
-            {% include "components/pagination.html" %}
+            <small>Total {{ query_count }} News</small>
+            {% include 'components/pagination_copy.html' with items=page_obj %}
         </div>
     </section>
     

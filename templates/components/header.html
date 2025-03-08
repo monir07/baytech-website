@@ -92,9 +92,9 @@
                                         <li class="col-lg-3"> <!--1 of 3 -->
                                             <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">Projects</span>
                                             <ul>
-                                                <li><a href="project_list.html"><i class="fas fa-list-alt me-2"></i>Ongoing New Building</a></li>
-                                                <li><a href="project_list.html"><i class="far fa-list-alt me-2"></i>Ongoing Repairs</a></li>
-                                                <li><a href="project_list.html"><i class="fas fa-th-list me-2"></i>Completed Projects</a></li>
+                                                <li><a href="{% url 'new_building_project_list' %}"><i class="fas fa-list-alt me-2"></i>Ongoing New Building</a></li>
+                                                <li><a href="{% url 'repair_project_list' %}"><i class="far fa-list-alt me-2"></i>Ongoing Repairs</a></li>
+                                                <li><a href="{% url 'completed_project_list' %}"><i class="fas fa-th-list me-2"></i>Completed Projects</a></li>
                                             </ul>
                                         </li>
                                         <li class="col-lg-3"> <!--1 of 4 -->
@@ -107,7 +107,7 @@
                                         <li class="col-lg-3"> <!--2 of 1 -->
                                             <span class="mb-lg-2 d-block py-2 px-4 p-lg-0 text-uppercase sub-title text-primary font-weight-800">News</span>
                                             <ul>
-                                                <li><a href="news_list.html"><i class="fas fa-newspaper me-2"></i>News & Insights</a></li>
+                                                <li><a href="{% url 'news_insight_list' %}"><i class="fas fa-newspaper me-2"></i>News & Insights</a></li>
                                                 <li><a href="photo_gallery.html"><i class="far fa-file-image me-2"></i>Photo Gallery</a></li>
                                             </ul>
                                         </li>
