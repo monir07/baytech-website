@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (TemplatePageView, NewBuildingProjectListView, 
                     ProjectDetailView, CompletedProjectListView, RepairProjectListView, 
-                    NewsInsightListView, NewsDetailView, JobPostListView)
+                    NewsInsightListView, NewsDetailView, JobPostListView, ContactUsCreateView)
 from .models import (JobPost)
 
 
@@ -24,5 +24,7 @@ urlpatterns = [
         model = JobPost,
         template_name = 'pages/job_details.html'
     ), name='job_post_details'),
+    # CONTACT US URL 
+    path('contact-us/form', ContactUsCreateView.as_view(), name='contact_us_create')
 
 ]

@@ -1,10 +1,13 @@
 from django.views import generic
+from django.urls import reverse_lazy
+from django.contrib import messages
+from django.http.response import HttpResponseRedirect
 from base.helpers.func import format_search_string
 from django.db.models import Q
 from page.models import (Project, ProjectInformation, ProjectMachinery, 
                          ProjectTypeChoices, ProjectCategoryChoices, 
-                         NewsInsight, JobPost)
-
+                         NewsInsight, JobPost, ContactUs)
+from page.forms import (ContactUsForm,)
 
 class TemplatePageView(generic.TemplateView):
     template_name = "home.html"
@@ -182,4 +185,24 @@ class JobPostListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['query_count'] = self.get_queryset()
         context['title'] = self.title
+        return context
+
+
+# CONTACT US START FORM HERE
+class ContactUsCreateView(generic.CreateView):
+    form_class = ContactUsForm
+    model = ContactUs
+    template_name = 'pages/contact_us.html'
+    success_message = 'message send successfully'
+    success_url = reverse_lazy("contact_us_create")
+
+
+    def form_valid(self, form, *args, **kwargs):
+        self.object = form.save(commit=False)
+        self.object.save()
+        messages.success(self.request, self.success_message)
+        return HttpResponseRedirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context
