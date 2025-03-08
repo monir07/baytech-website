@@ -106,6 +106,36 @@ class TeamMember(models.Model):
 
 
 # JOB POST PAGES START FROM HERE
+class Responsibility(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.description
+
+class EducationalRequirement(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.description
+
+class ExperienceRequirement(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.description
+
+class AdditionalRequirement(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.description
+
+class Benifit(models.Model):
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.description
+
 class JobPost(models.Model):
     title = models.CharField(max_length=255)
     published_date = models.DateField()
@@ -114,11 +144,13 @@ class JobPost(models.Model):
     vacancy = models.IntegerField()
     salary = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField()
-    job_responsibilities = ArrayField(models.CharField(max_length=255), blank=True, default=list)
-    educational_requirements = ArrayField(models.CharField(max_length=255), blank=True, default=list)
-    experience_requirements = ArrayField(models.CharField(max_length=255), blank=True, default=list)
-    additional_requirements = ArrayField(models.CharField(max_length=255), blank=True, default=list)
-    benifits = ArrayField(models.CharField(max_length=255), blank=True, default=list)
+
+    job_responsibilities = models.ManyToManyField(Responsibility, blank=True)
+    educational_requirements = models.ManyToManyField(EducationalRequirement, blank=True)
+    experience_requirements = models.ManyToManyField(ExperienceRequirement, blank=True)
+    additional_requirements = models.ManyToManyField(AdditionalRequirement, blank=True)
+    benifits = models.ManyToManyField(Benifit, blank=True)
+
     location = models.TextField()
     is_active = models.BooleanField(default=True)
 

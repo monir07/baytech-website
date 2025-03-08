@@ -3,7 +3,7 @@ from base.helpers.func import format_search_string
 from django.db.models import Q
 from page.models import (Project, ProjectInformation, ProjectMachinery, 
                          ProjectTypeChoices, ProjectCategoryChoices, 
-                         NewsInsight)
+                         NewsInsight, JobPost)
 
 
 class TemplatePageView(generic.TemplateView):
@@ -153,4 +153,33 @@ class NewsDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return context
+
+
+# JOB POST PAGES START FROM HERE
+class JobPostListView(generic.ListView):
+    model = JobPost
+    paginate_by = '10'
+    context_object_name = 'items'
+    template_name = 'pages/job-post-list.html'
+    queryset = JobPost.objects.filter()
+    search_fields = ['proejct_no']
+    title = 'Empower Your Career Journey with Us'
+    
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(Q(is_active=True))
+
+        query_param = self.request.GET.copy()
+        search_param = query_param.get('query', None)
+        if search_param:
+            Qr = format_search_string(self.search_fields, search_param)
+            queryset = queryset.filter(Qr)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query_count'] = self.get_queryset()
+        context['title'] = self.title
         return context

@@ -1,0 +1,92 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Job Details{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+    <!-- PAGE TITLE-->
+    <section class="page-title-section bg-img cover-background secondary-overlay" data-overlay-dark="9">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ item.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PROJECT DETAILS -->
+    <section>
+        <div class="container">
+            <div class="project-single">
+                <div class="row project-single-text">
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Key Information</h2>
+                        </div>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Published: {{ item.published_date }}</span><br>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Deadline: {{ item.deadline }}</span><br>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Job Type: {{ item.job_type|title }}</span><br>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Vacancy: {{ item.vacancy }}</span><br>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Salary: {{ item.salary }} (Monthly) ( Negotiable )</span><br>
+                        <i class="fa fa-asterisk text-success"></i><span class="ps-3">Email: info@bay-techgroup.com</span><br>
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Responsibilities</h2>
+                        </div>
+                        {% for responsibility in item.job_responsibilities.all %}
+                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ responsibility }}</span><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Educational Requirements</h2>
+                        </div>
+                        {% for responsibility in item.educational_requirements.all %}
+                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ responsibility }}</span><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Experience requirements</h2>
+                        </div>
+                        {% for responsibility in item.experience_requirements.all %}
+                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ responsibility }}</span><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Additional requirements</h2>
+                        </div>
+                        {% for responsibility in item.additional_requirements.all %}
+                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ responsibility }}</span><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Benefits</h2>
+                        </div>
+                        {% for responsibility in item.benifits.all %}
+                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ responsibility }}</span><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="section-heading half left">
+                            <h2 class="lh-1">Location</h2>
+                        </div>
+                        <p>{{ item.location }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock page_content %}
+<!-- page-content -->

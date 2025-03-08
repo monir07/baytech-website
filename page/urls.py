@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import (TemplatePageView, NewBuildingProjectListView, 
                     ProjectDetailView, CompletedProjectListView, RepairProjectListView, 
-                    NewsInsightListView, NewsDetailView)
+                    NewsInsightListView, NewsDetailView, JobPostListView)
+from .models import (JobPost)
 
 
 urlpatterns = [
@@ -17,5 +18,11 @@ urlpatterns = [
     # news and insight urls
     path('news-insight/list', NewsInsightListView.as_view(), name='news_insight_list'),
     path('news-insight/details/<int:pk>', NewsDetailView.as_view(), name='news_insight_details'),
+    # Job Post List
+    path('job-post/list', JobPostListView.as_view(), name='job_post_list'),
+    path('job-post/details/<int:pk>', NewsDetailView.as_view(
+        model = JobPost,
+        template_name = 'pages/job_details.html'
+    ), name='job_post_details'),
 
 ]

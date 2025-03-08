@@ -1,0 +1,53 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Jobs{% endblock title %}
+
+
+
+
+<!-- page-content -->
+{% block page_content %}
+	<!-- TABLES  -->
+    <section>
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="h1 lh-1">{{ title|title }}</h2>
+            </div>
+            <div class="row position-relative">
+                <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Publish Date</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                    <tr>
+                                        <td>{{ item.published_date|date:'d-m-Y' }}</td>
+                                        <td>{{ item.description|truncatechars:75 }}</td>
+                                        <td> 
+                                            <a href="{% url 'job_post_details' item.pk %}">
+                                                <button type="button" class="btn btn-success btn-addon"><i class="fas fa-file-pdf me-2"></i> View</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <small>Total {{ query_count|length }} Jobs</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PAGINATION START FROM HERE -->
+            
+            {% include 'components/pagination_copy.html' with items=page_obj %}
+        </div>
+    </section>
+{% endblock page_content %}
+<!-- page-content -->
+
