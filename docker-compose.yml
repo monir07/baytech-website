@@ -1,26 +1,31 @@
 version: "3"
-   
 services:
   db:
-    image: postgres:16.2-alpine
+    image: postgres:15.5-alpine
+    container_name: baytech-web-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=dsy
+      - POSTGRES_USER=misfit
+      - POSTGRES_PASSWORD=3210
+      - POSTGRES_DB=alice
     ports:
-      - 5434:5432
+      - 5435:5432
 
   app:
-    container_name: dsy_app
     build:
       context: .
-      dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8001
-    ports:
-      - 8001:8001
+      args:
+        - MODE=DEVELOPMENT
+    container_name: baytech-web
     volumes:
-      - ./:/app/
+      - .:/usr/code/
+      - ./logs/:/usr/logs/
+    env_file: .env
+    ports:
+      - 8010:8010
     depends_on:
       - db
-    env_file:
-      - .env
+
+volumes:
+  postgres_data: {}
