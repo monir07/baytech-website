@@ -1,13 +1,15 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http.response import HttpResponseRedirect
-from base.helpers.func import format_search_string
+from django.views.generic.edit import FormMixin
+from base.helpers.func import (format_search_string, generate_qr_code)
 from django.db.models import Q
 from page.models import (Project, ProjectInformation, ProjectMachinery, 
                          ProjectTypeChoices, ProjectCategoryChoices, 
-                         NewsInsight, JobPost, ContactUs)
-from page.forms import (ContactUsForm,)
+                         NewsInsight, JobPost, ContactUs, DockingCertificate)
+from page.forms import (ContactUsForm, DockingCertificateSearchForm)
 
 class TemplatePageView(generic.TemplateView):
     template_name = "home.html"
@@ -205,4 +207,77 @@ class ContactUsCreateView(generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return context
+
+
+
+class DockingCertificateSearchView(FormMixin, generic.View):
+    title = "Docking Certificate Search Form"
+    form_class = DockingCertificateSearchForm
+    template_name = 'pages/search_form.html'
+    
+
+    def get(self, request, *args, **kwargs):
+        if '_docking_search' in self.request.GET:
+            form_class = self.get_form_class()
+            form = form_class(self.request.GET)
+            if form.is_valid():
+                form_data = form.cleaned_data
+                certificate_no = form_data.get('certificate_no', None)
+
+                query = Q()
+                if certificate_no:
+                    query = query & Q(certificate_no=certificate_no)
+                
+                try:
+                    query_object = DockingCertificate.objects.get(query)
+                except DockingCertificate.DoesNotExist:
+                    messages.warning(self.request, f'Docking Certificate: {certificate_no} Not Found!!')
+                    return redirect('docking_certificate_search')
+                
+
+                self.template_name = 'pages/docking_certificate.html'
+                certificate_url = f"http://127.0.0.1:8000/docking-certificate/details/{query_object.certificate_no}"
+
+                # Generate QR code
+                qr_code_image = generate_qr_code(certificate_url)                
+
+                context = {
+                    'item' : query_object,
+                    'qr_code_image' : qr_code_image,
+                    'certificate_url': certificate_url
+                }
+                return render(request, self.template_name, context)
+        else:
+            form = self.get_form()
+            context = {
+                'form': form,
+                'title': self.title,
+                }
+            return render(request, self.template_name, context)
+
+
+class DockingCertificateDetailView(generic.DetailView):
+    model = DockingCertificate
+    context_object_name = 'item'
+    slug_field = 'certificate_no'  # Field to use for lookup
+    slug_url_kwarg = 'certificate_no'  # URL keyword argument
+    template_name = 'pages/docking_certificate.html'
+
+
+    # Optional: Override get_object if you need custom logic
+    def get_object(self, queryset=None):
+        # Get the certificate_no from the URL
+        certificate_no = self.kwargs.get('certificate_no')
+        # Fetch the object using the certificate_no
+        return get_object_or_404(DockingCertificate, certificate_no=certificate_no)
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        certificate_object = self.get_object()
+        certificate_url = f"http://127.0.0.1:8000/docking-certificate/details/{certificate_object.certificate_no}/"
+        # Generate QR code
+        qr_code_image = generate_qr_code(certificate_url)
+        context['qr_code_image'] = qr_code_image 
         return context

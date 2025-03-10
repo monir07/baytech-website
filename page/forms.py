@@ -13,3 +13,8 @@ class ContactUsForm(forms.ModelForm):
             'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Tell us a few words', 'rows':'3'}),
             'contact_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Your phone here'}),
         }
+
+
+class DockingCertificateSearchForm(forms.Form):
+    certificate_no = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control',
+                                                                    'placeholder':'Insert Docking Certificate No'}),)

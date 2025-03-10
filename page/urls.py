@@ -1,8 +1,9 @@
 from django.urls import path
 from .views import (TemplatePageView, NewBuildingProjectListView, 
                     ProjectDetailView, CompletedProjectListView, RepairProjectListView, 
-                    NewsInsightListView, NewsDetailView, JobPostListView, ContactUsCreateView)
-from .models import (JobPost)
+                    NewsInsightListView, NewsDetailView, JobPostListView, ContactUsCreateView,
+                    DockingCertificateSearchView, DockingCertificateDetailView)
+from .models import (JobPost, )
 
 
 urlpatterns = [
@@ -10,6 +11,10 @@ urlpatterns = [
         template_name = "pages/service_details.html",
         image_urls = ['assets/img/slider/slide19.jpg', 'assets/img/slider/slide16.jpg', 'assets/img/slider/slide17.jpg']
     ), name='shipbuilding'),
+    
+    path('maintenance/', TemplatePageView.as_view(
+        template_name = "pages/maintenance.html",
+    ), name='maintenance'),
 
     path('project/on-going/new-building', NewBuildingProjectListView.as_view(), name='new_building_project_list'),
     path('project/on-going/repair', RepairProjectListView.as_view(), name='repair_project_list'),
@@ -25,6 +30,9 @@ urlpatterns = [
         template_name = 'pages/job_details.html'
     ), name='job_post_details'),
     # CONTACT US URL 
-    path('contact-us/form', ContactUsCreateView.as_view(), name='contact_us_create')
+    path('contact-us/form', ContactUsCreateView.as_view(), name='contact_us_create'),
+    # DOCKING CERTIFICATE
+    path('docking-certificate/search', DockingCertificateSearchView.as_view(), name='docking_certificate_search'),
+    path('docking-certificate/details/<str:certificate_no>/', DockingCertificateDetailView.as_view(), name='docking_certificate_details'),
 
 ]

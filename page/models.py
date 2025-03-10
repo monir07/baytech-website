@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from base.helpers.validators import file_size_validator
 from django.contrib.postgres.fields import ArrayField
+import uuid
 
 User = get_user_model()
 
@@ -171,3 +172,37 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return f"{self.name}: {self.contact_no}"
+
+
+class JobDescription(models.Model):
+    description = models.CharField(max_length=255)
+
+
+    def __str__(self):
+        return f"{self.description[:25]}"
+
+
+class DockingCertificate(models.Model):
+    vessel_name = models.CharField(max_length=100)
+    length = models.CharField(max_length=25)
+    breadth = models.CharField(max_length=25)
+    depth = models.CharField(max_length=25)
+    registration_no = models.CharField(max_length=25)
+    issue_date = models.DateField()
+    docking_date = models.DateField()
+    undocking_date = models.DateField()
+    slip_way_no = models.SmallIntegerField()
+    certificate_no = models.CharField(max_length=25, unique=True, blank=True)
+    docking_jobs = models.ManyToManyField(JobDescription, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='created_%(class)ss')  
+
+    def save(self, *args, **kwargs):
+        if not self.certificate_no:
+            self.certificate_no = f"BTSBDC-{uuid.uuid4().hex[:8].upper()}"
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.vessel_name

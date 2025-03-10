@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}About Us{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+	<!-- MAINTENANCE
+        ================================================== -->
+        <section class="p-0">
+            <div class="container d-flex flex-column">
+                <div class="row align-items-center justify-content-center min-vh-100">
+                    <div class="col-sm-11 col-md-9 col-lg-7 col-xl-8">
+                        <div class="my-1-9 text-center">
+
+                            <div class="mb-1-9">
+                                <img class="img-fluid" src="{% static 'assets/img/content/maintenance-mode.png' %}" alt="...">
+                            </div>
+
+                            <div class="w-xl-80 text-center mx-lg-auto">
+                                <h1 class="h2 main-font font-weight-500">We are just updating a few things</h1>
+                                <p class="lead mb-1-9">We completely understand your disappointment. Please accept our apologies.</p>
+                                <a class="butn primary" href="{% url 'home' %}"><span>Check for Updates</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock page_content %}
+<!-- page-content -->

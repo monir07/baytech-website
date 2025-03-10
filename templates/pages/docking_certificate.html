@@ -1,0 +1,73 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Certificate{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+    <section class="blogs">
+        <div class="container">
+            <div class="row">
+                <!--  start blog left-->
+                <div class="col-lg-12 mb-2-9 mb-lg-0">
+                    <div class="posts pe-lg-1-6 pe-xl-1-9">
+
+                        <!--  start post-->
+                        <div class="post border-top-radius-6">
+                            <div class="content bg-light border-bottom-radius-6">
+                                <div class="blog-list-simple-text border-bottom border-color-light-black pb-0 mb-4">
+                                    <h2 class="h1 lh-1">Docking Certifiate for {{ item.vessel_name }}</h2>
+                                    <ul class="meta ps-0">
+                                        <li>
+                                            Issued on: {{ item.issue_date }}
+                                        </li>
+                                        <li>
+                                            Certificate no: {{ item.certificate_no }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="post-cont">
+                                    <p>
+                                        This is to certify that {{ item.vessel_name }}, Length: {{ item.length }}, Breadth: {{ item.breadth }}, Depth: {{ item.depth }} Registration No: {{ item.registration_no }} has been docked in slipway
+                                        No: {{ item.slip_way_no }} of Bay Tech Ship Builders on {{ item.docking_date }} and undocked on {{ item.undocking_date }} and completed the
+                                        following jobs:
+                                    </p>
+                
+                                    <p>
+                                        {% for job in item.docking_jobs.all %}
+                                        <i class="fa fa-asterisk text-success"></i>  <span class="ps-3">{{ job.description }}</span><br>
+                                        {% endfor %}
+                                    </p>
+                                    
+                                    <div class="border-bottom mb-3 mb-lg-4 pb-3 pb-lg-4"></div>
+                                </div>
+                                
+                                <!-- SIGNATURE BLOCK-->
+                                <div class="text-end float-start w-100">
+                                    <p class="float-start text-start mb-0">
+                                        <img src="{% static 'assets/img/content/signature-black.png' %}" alt="..." class="align-top">
+                                        <span class="font-weight-700 d-block">Engr. Md. Tazul Islam</span>
+                                        Owner and CEO<br>
+                                        Email: tazul.islam@baytechship.com <br>
+                                        BIN- 001825276-0302<br>
+                                        Phone: +8801321173040 +8801720107311<br>
+                                        Bay-Tech Ship Builders.<br>
+                                        Bay-Tech Ship Solution Zone.<br>
+                                        Bay-Tech NDT & Engineering Services.<br>
+                                    </p>
+                                    <div class="float-end  mt-2">
+                                        <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  start post-->                        
+                    </div>
+                </div>
+                <!--  end blog left-->
+            </div>
+        </div>
+    </section>
+{% endblock page_content %}
+<!-- page-content -->
+

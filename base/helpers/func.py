@@ -2,6 +2,8 @@ import re
 import time
 import random
 import string
+import qrcode
+import base64
 from typing import List, Callable
 import uuid
 import datetime
@@ -13,6 +15,7 @@ from xhtml2pdf import pisa
 from django.db.models import Lookup
 from django.apps import apps
 from datetime import datetime, date, timedelta
+
 
 def create_slug(title: str, random_str: str = None) -> str:
     title = re.sub('[^A-Za-z ]+', ' ', title).lower().strip()
@@ -162,3 +165,24 @@ def get_duration(start_time, end_time):
 
         # Return the duration in your preferred format
         return duration
+
+
+# Generate Qr code from web link.
+def generate_qr_code(url_link):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=6,
+        border=4,
+    )
+    qr.add_data(url_link)
+    qr.make(fit=True)
+
+    # Create an image from the QR code
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Convert the image to a base64 string
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    qr_code_image = base64.b64encode(buffer.getvalue()).decode()
+    return qr_code_image

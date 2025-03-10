@@ -1,0 +1,56 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+
+    
+    <!-- CONTRACT US FORM -->
+    <section id="id_contact">
+        <div class="container">
+            {% include 'components/alert.html' %}
+            <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="contact-form-box bg-light p-2-2 p-md-5 rounded border border-color-light-black">
+
+                        <div class="section-heading left half">
+                            <h3 class="h2 lh-1">Let's search your docking certificate.</h3>
+                        </div>
+
+                        <!-- start form here -->
+                        <form method="get" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div>
+                                <div class="row">
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">Certificate No <span class="quform-required">*</span></label>
+                                            <div>
+                                                {{ form.certificate_no }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Text input element -->                          
+
+                                    <!-- Begin Submit button -->
+                                    <div class="col-md-6">
+                                        <div>
+                                            <button class="butn border-0 primary" name="_docking_search" type="submit"><span>Search</span></button>
+                                        </div>
+                                    </div>
+                                    <!-- End Submit button -->
+                                </div>
+                            </div>
+                        </form>
+                        <!-- end form here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock page_content %}
+<!-- page-content -->
