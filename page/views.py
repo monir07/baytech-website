@@ -10,7 +10,8 @@ from django.db.models import Q
 from base.helpers.utils import send_simple_email
 from page.models import (Project, ProjectInformation, ProjectMachinery, 
                          ProjectTypeChoices, ProjectCategoryChoices, 
-                         NewsInsight, JobPost, ContactUs, DockingCertificate)
+                         NewsInsight, JobPost, ContactUs, DockingCertificate, 
+                         TeamMember)
 from page.forms import (ContactUsForm, DockingCertificateSearchForm)
 
 class TemplatePageView(generic.TemplateView):
@@ -306,4 +307,30 @@ class DockingCertificateDetailView(generic.DetailView):
         # Generate QR code
         qr_code_image = generate_qr_code(certificate_url)
         context['qr_code_image'] = qr_code_image 
+        return context
+
+
+class TeamMemberListView(generic.ListView):
+    model = TeamMember
+    paginate_by = '10'
+    context_object_name = 'items'
+    template_name = 'pages/job-post-list.html'
+    queryset = TeamMember.objects.filter()
+    search_fields = ['name']
+    
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(Q(is_active=True))
+
+        query_param = self.request.GET.copy()
+        search_param = query_param.get('query', None)
+        if search_param:
+            Qr = format_search_string(self.search_fields, search_param)
+            queryset = queryset.filter(Qr)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query_count'] = self.get_queryset()
         return context
