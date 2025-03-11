@@ -1,5 +1,4 @@
 import random
-import base64
 from django.db import connection
 from email.mime.base import MIMEBase
 from email import encoders
@@ -11,6 +10,17 @@ from celery.utils.log import get_task_logger
 from base.pdf_render import Render
 logger = get_task_logger(__name__)
 
+
+def send_simple_email(subject, body, to_mails: list, html_body: str = None):
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=body,
+        from_email=settings.FROM_EMAIL,
+        to=to_mails
+    )
+    if html_body:
+        email.attach_alternative(html_body, "text/html")  # Attach HTML version
+    email.send()
 
 def identifier_builder(table_name: str, prefix: str = None) -> str:
     with connection.cursor() as cur:
