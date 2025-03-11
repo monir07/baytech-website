@@ -4,8 +4,10 @@ from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http.response import HttpResponseRedirect
 from django.views.generic.edit import FormMixin
+from django.conf import settings
 from base.helpers.func import (format_search_string, generate_qr_code)
 from django.db.models import Q
+from base.helpers.utils import send_simple_email
 from page.models import (Project, ProjectInformation, ProjectMachinery, 
                          ProjectTypeChoices, ProjectCategoryChoices, 
                          NewsInsight, JobPost, ContactUs, DockingCertificate)
@@ -197,11 +199,33 @@ class ContactUsCreateView(generic.CreateView):
     template_name = 'pages/contact_us.html'
     success_message = 'message send successfully'
     success_url = reverse_lazy("contact_us_create")
+    
+    def generate_email_body(self, form):
+        email_body = f"""
+            <html>
+            <head></head>
+            <body>
+                <h3>New Contact Us Form Submission from</h3>
+                <p><strong>Name:</strong> {form.cleaned_data['name']}</p>
+                <p><strong>Email Address:</strong> {form.cleaned_data['email_address']}</p>
+                <p><strong>Contact No:</strong> {form.cleaned_data['contact_no']}</p>
+                <p><strong>Subject:</strong> {form.cleaned_data['subject']}</p>
+                <p><strong>Message:</strong><br> {form.cleaned_data['message']}</p>
+            </body>
+            </html>
+        """
+        return email_body
 
-
-    def form_valid(self, form, *args, **kwargs):
+    def form_valid(self, form: ContactUsForm, *args, **kwargs):
         self.object = form.save(commit=False)
         self.object.save()
+        email_body = self.generate_email_body(form)
+        send_simple_email(
+            subject="New Contact Us Submission",
+            body="",
+            to_mails=[settings.INFO_BAYTECH_EMAIL],
+            html_body=email_body
+        )
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(self.success_url)
 
