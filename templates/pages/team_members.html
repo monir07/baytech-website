@@ -8,7 +8,7 @@
 	<!-- ALL TEAMS -->
 	<section class="bg-light">
 		<div class="container">
-			<div class="row mt-n1-9">
+			<div class="row">
 				<div class="col-sm-6 col-lg-4 mt-1-9">
 					
 				</div>
@@ -28,41 +28,23 @@
 			
 			<!-- row 2 start -->
 			<div class="row mt-n1-9">
+				{% for item in items %}
 				<div class="col-sm-6 col-lg-3 mt-1-9">
 					<div class="team-members">
-						<div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/td.jpg' %}"></div>
+						<div class="team-members-img"><img alt="..." src="/media/{{ item.photo }}"></div>
 						<div class="team-members-text">
-							<h4><a href="team_details.html">Mohammed Fazlul Karim</a></h4><span>Technical Director</span>
+							<h4><a href="{% url 'team_member_details' item.pk %}">{{ item.name }}</a></h4><span>{{ item.designation }}</span>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-lg-3 mt-1-9">
-					<div class="team-members">
-						<div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/gm.jpg' %}">
-						</div>
-						<div class="team-members-text">
-							<h4><a href="team_details.html">Md. Reazul Islam</a></h4><span>General Manager (HR, Admin & Procurement)</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3 mt-1-9">
-					<div class="team-members">
-						<div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/accounts.jpg' %}"></div>
-						<div class="team-members-text">
-							<h4><a href="team_details.html">Md. Moshfeq-Ur- Rashid</a></h4><span>GM (Head Of Finance & Accounts)</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3 mt-1-9">
-					<div class="team-members">
-						<div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/team-04.jpg' %}"></div>
-						<div class="team-members-text">
-							<h4><a href="team_details.html">Lenethi  Miloler</a></h4><span>Designer</span>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
+			<!-- PAGINATION START FROM HERE -->
+			<small>Total {{ query_count|length }} Members</small>
+			{% include 'components/pagination_copy.html' with items=page_obj %}
 		</div>
+		
+		
 	</section>
 {% endblock page_content %}
 <!-- page-content -->

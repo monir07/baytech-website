@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-5 col-xl-6 mt-4">
                         <div class="text-start text-lg-end">
-                            <a href="team_members.html" class="butn-style9"><span class="text-btn">All Teams</span></a>
+                            <a href="{% url 'team_members_list' %}" class="butn-style9"><span class="text-btn">All Teams</span></a>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="team-members">
                         <div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/owner.jpg' %}"></div>
                         <div class="team-members-text">
-                            <h4><a href="team_details.html">Engr. Md. Tazul Islam</a></h4><span>Owner and Chairman Bay-Tech Group</span>
+                            <h4><a href="{% url 'team_member_details' 2 %}">Engr. Md. Tazul Islam</a></h4><span>Owner and Chairman Bay-Tech Group</span>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/td.jpg' %}">
                         </div>
                         <div class="team-members-text">
-                            <h4><a href="team_details.html">Mohammed Fazlul Karim</a></h4><span>Technical Director</span>
+                            <h4><a href="{% url 'team_member_details' 2 %}">Mohammed Fazlul Karim</a></h4><span>Technical Director</span>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="team-members">
                         <div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/gm.jpg' %}"></div>
                         <div class="team-members-text">
-                            <h4><a href="team_details.html">Md. Reazul Islam</a></h4><span>General Manager (HR, Admin & Procurement)</span>
+                            <h4><a href="{% url 'team_member_details' 2 %}">Md. Reazul Islam</a></h4><span>General Manager (HR, Admin & Procurement)</span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="team-members">
                         <div class="team-members-img"><img alt="..." src="{% static 'assets/img/team/accounts.jpg' %}"></div>
                         <div class="team-members-text">
-                            <h4><a href="team_details.html">Md. Moshfeq-Ur- Rashid</a></h4><span>GM (Head Of Finance & Accounts)</span>
+                            <h4><a href="{% url 'team_member_details' 2 %}">Md. Moshfeq-Ur- Rashid</a></h4><span>GM (Head Of Finance & Accounts)</span>
                         </div>
                     </div>
                 </div>

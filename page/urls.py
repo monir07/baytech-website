@@ -2,8 +2,8 @@ from django.urls import path
 from .views import (TemplatePageView, NewBuildingProjectListView, 
                     ProjectDetailView, CompletedProjectListView, RepairProjectListView, 
                     NewsInsightListView, NewsDetailView, JobPostListView, ContactUsCreateView,
-                    DockingCertificateSearchView, DockingCertificateDetailView)
-from .models import (JobPost, )
+                    DockingCertificateSearchView, DockingCertificateDetailView, TeamMemberListView)
+from .models import (JobPost, TeamMember)
 
 
 urlpatterns = [
@@ -34,5 +34,11 @@ urlpatterns = [
     # DOCKING CERTIFICATE
     path('docking-certificate/search', DockingCertificateSearchView.as_view(), name='docking_certificate_search'),
     path('docking-certificate/details/<str:certificate_no>/', DockingCertificateDetailView.as_view(), name='docking_certificate_details'),
+    # TEAM MEMBERS URLS.
+    path('team-members/list', TeamMemberListView.as_view(), name='team_members_list'),
+    path('team-member/details/<int:pk>', NewsDetailView.as_view(
+        model = TeamMember,
+        template_name = 'pages/team_details.html'
+    ), name='team_member_details'),
 
 ]

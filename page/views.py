@@ -312,16 +312,15 @@ class DockingCertificateDetailView(generic.DetailView):
 
 class TeamMemberListView(generic.ListView):
     model = TeamMember
-    paginate_by = '10'
+    paginate_by = '8'
     context_object_name = 'items'
-    template_name = 'pages/job-post-list.html'
+    template_name = 'pages/team_members.html'
     queryset = TeamMember.objects.filter()
     search_fields = ['name']
     
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(Q(is_active=True))
 
         query_param = self.request.GET.copy()
         search_param = query_param.get('query', None)

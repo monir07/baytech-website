@@ -11,78 +11,31 @@
                 <div class=team-single>
                     <div class="row">
                         <div class="col-md-4 mb-1-9 mb-md-6">
-                            <div class=team-single-img><img alt="..." src="{% static 'assets/img/team/teammember-01.jpg' %}"></div>
+                            <div class=team-single-img><img alt="..." src="/media/{{ item.photo }}"></div>
                         </div>
                         <div class="col-md-8 mb-1-9 mb-md-6">
-                            <div class="team-single-text"><span class="text-uppercase small font-weight-800 text-primary">Agency Founder</span>
+                            <div class="team-single-text"><span class="text-uppercase small font-weight-800 text-primary">{{ item.designation }}</span>
                                 <div class="section-heading half left">
-                                    <h4 class="h1 lh-1">Finley Walkeror</h4>
+                                    <h4 class="h1 lh-1">{{ item.name }}</h4>
                                 </div>
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laborum. Sed ut perspiciatis error sit voluptatem accusantium doloremque laudantium.</p>
+                                <p>{{ item.short_description }}</p>
                                 <div class="contact-info-section p-0 border-0">
                                     <ul class="list-style-1 mb-0 list-unstyled">
                                         <li>
-                                            <i class="fas fa-mobile-alt text-center"></i> <strong>Address:</strong> Regina ST, London, SK.
+                                            <i class="fas fa-globe text-center"></i> <strong>Phone:</strong> {{ item.phone_no }}
                                         </li>
                                         <li>
-                                            <i class="fas fa-globe text-center"></i> <strong>Phone:</strong> (+44) 123 456 789
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-envelope text-center"></i> <strong>Email:</strong> <a href="team-single.html#!">email@youradress.com</a>
+                                            <i class="fas fa-envelope text-center"></i> <strong>Email:</strong> <a href="{{ item.email_address }}">{{ item.email_address }}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="mt-4 team-single-icons">
                                     <ul class="mb-0 ps-0">
-                                        <li><a href="team-single.html#!"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="team-single.html#!"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                        <li><a href="team-single.html#!"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="team-single.html#!"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="{{ item.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="{{ item.twitter }}"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                        <li><a href="{{ item.linkedin }}"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="{{ item.instagram }}"><i class="fab fa-instagram"></i></a></li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="section-heading half left">
-                                <h3 class="h1 lh-1">Professional Skills</h3>
-                            </div>
-                            <div class="m-0">
-                                <div class="progress-text">
-                                    <div class="row">
-                                        <div class="col-6">Business Strategy</div>
-                                        <div class="col-6 text-end">18%</div>
-                                    </div>
-                                </div>
-                                <div class="custom-progress progress">
-                                    <div role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100" style="width:18%" class="animated custom-bar progress-bar slideInLeft"></div>
-                                </div>
-                                <div class="progress-text">
-                                    <div class="row">
-                                        <div class="col-6">Finance Consultancy</div>
-                                        <div class="col-6 text-end">30%</div>
-                                    </div>
-                                </div>
-                                <div class="custom-progress progress">
-                                    <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%" class="animated custom-bar progress-bar slideInLeft"></div>
-                                </div>
-                                <div class="progress-text">
-                                    <div class="row">
-                                        <div class="col-6">Investment Plan</div>
-                                        <div class="col-6 text-end">50%</div>
-                                    </div>
-                                </div>
-                                <div class="custom-progress progress">
-                                    <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%" class="animated custom-bar progress-bar slideInLeft"></div>
-                                </div>
-                                <div class="progress-text">
-                                    <div class="row">
-                                        <div class="col-6">Investment Banking</div>
-                                        <div class="col-6 text-end">80%</div>
-                                    </div>
-                                </div>
-                                <div class="custom-progress progress mb-0">
-                                    <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%" class="animated custom-bar progress-bar slideInLeft"></div>
                                 </div>
                             </div>
                         </div>

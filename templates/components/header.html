@@ -35,7 +35,7 @@
         <!-- start top search -->
         <div class="top-search bg-secondary">
             <div class="container-fluid container-xl">
-                <form class="search-form" action="https://crizal.websitelayout.net/search.html" method="GET" accept-charset="utf-8">
+                <form class="search-form" action="{% url 'maintenance' %}" method="GET" accept-charset="utf-8">
                     <div class="input-group">
                         <span class="input-group-addon cursor-pointer">
                             <button class="search-form_submit fas fa-search text-white" type="submit"></button>
@@ -81,7 +81,7 @@
                                             <ul>
                                                 <li><a href="about_us.html"><i class="fab fa-wpforms me-2"></i>About Us</a></li>
                                                 <li><a href="facilities.html"><i class="fab fa-wpforms me-2"></i>Our Facilities</a></li>
-                                                <li><a href="team_members.html"><i class="fab fa-wpforms me-2"></i>Our Team Members</a></li>
+                                                <li><a href="{% url 'team_members_list' %}"><i class="fab fa-wpforms me-2"></i>Our Team Members</a></li>
                                             </ul>
                                         </li>
                                         <li class="col-lg-3"> <!--1 of 2 -->
@@ -145,8 +145,8 @@
                             <!-- start attribute navigation -->
                             <div class="attr-nav align-items-lg-center ms-lg-auto main-font">
                                 <ul>
-                                    <li class="search"><a href="home-corporate-02.html#!"><i class="fas fa-search"></i></a></li>
-                                    <li class="d-none d-xxl-inline-block"><a href="contact.html" class="butn secondary small"><span>Free Quote</span></a></li>
+                                    <li class="search"><a href="#!"><i class="fas fa-search"></i></a></li>
+                                    <li class="d-none d-xxl-inline-block"><a href="{% url 'maintenance' %}" class="butn secondary small"><span>Free Quote</span></a></li>
                                 </ul>
                             </div>
                             <!-- end attribute navigation -->
