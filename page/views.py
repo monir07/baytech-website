@@ -219,6 +219,7 @@ class ContactUsCreateView(generic.CreateView):
     def form_valid(self, form: ContactUsForm, *args, **kwargs):
         self.object = form.save(commit=False)
         self.object.save()
+        """ 
         email_body = self.generate_email_body(form)
         send_simple_email(
             subject="New Contact Us Submission",
@@ -226,6 +227,7 @@ class ContactUsCreateView(generic.CreateView):
             to_mails=[settings.INFO_BAYTECH_EMAIL],
             html_body=email_body
         )
+        """
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(self.success_url)
 

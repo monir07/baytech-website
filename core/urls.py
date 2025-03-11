@@ -46,6 +46,8 @@ urlpatterns = [
 
     # notice urls
     path('notice/', include(notice_urls)),
+    # captcha urls
+    path('captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += [path('api-auth/', include('rest_framework.urls')),]
