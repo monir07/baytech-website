@@ -11,14 +11,20 @@ urlpatterns = [
         template_name = "pages/shipbuilding.html",
         image_urls = ['assets/img/slider/slide19.jpg', 
                       'assets/img/slider/slide16.jpg', 
-                      'assets/img/slider/slide17.jpg']
+                      'assets/img/slider/slide17.jpg'],
+        banner_texts = ['Ship design', 
+                        'Consultancy', 
+                        'Shi'],
     ), name='shipbuilding'),
 
     path('ship-design/', TemplatePageView.as_view(
         template_name = "pages/shipdesign.html",
-        image_urls = ['assets/img/slider/slide19.jpg', 
-                      'assets/img/slider/slide16.jpg', 
-                      'assets/img/slider/slide17.jpg']
+        image_urls = ['assets/img/slider/design-banner-01.jpg', 
+                      'assets/img/slider/design-banner-01.jpg', 
+                      'assets/img/slider/slide17.jpg'],
+        banner_texts = ['Ship design', 
+                        'Consultancy', 
+                        'Ship Design & Consultancy'],
     ), name='ship_design'),
 
     path('ndt-services/', TemplatePageView.as_view(
