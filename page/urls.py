@@ -8,9 +8,33 @@ from .models import (JobPost, TeamMember)
 
 urlpatterns = [
     path('shipbuilding/', TemplatePageView.as_view(
-        template_name = "pages/service_details.html",
-        image_urls = ['assets/img/slider/slide19.jpg', 'assets/img/slider/slide16.jpg', 'assets/img/slider/slide17.jpg']
+        template_name = "pages/shipbuilding.html",
+        image_urls = ['assets/img/slider/slide19.jpg', 
+                      'assets/img/slider/slide16.jpg', 
+                      'assets/img/slider/slide17.jpg']
     ), name='shipbuilding'),
+
+    path('ship-design/', TemplatePageView.as_view(
+        template_name = "pages/shipdesign.html",
+        image_urls = ['assets/img/slider/slide19.jpg', 
+                      'assets/img/slider/slide16.jpg', 
+                      'assets/img/slider/slide17.jpg']
+    ), name='ship_design'),
+
+    path('ndt-services/', TemplatePageView.as_view(
+        template_name = "pages/ndt_engineering.html",
+        image_urls = ['assets/img/slider/ndt-banner-01.jpg', 
+                      'assets/img/slider/ndt-banner-01.jpg', 
+                      'assets/img/slider/slide17.jpg'],
+        banner_texts = ['Bay-Tech NDT Services', 
+                        'Bay-Tech NDT Services', 
+                        'Bay-Tech NDT Services'],
+    ), name='ndt_service'),
+
+    path('dharla-logistics/', TemplatePageView.as_view(
+        template_name = "pages/dharla_logistics.html",
+        image_urls = ['assets/img/slider/slide19.jpg', 'assets/img/slider/slide16.jpg', 'assets/img/slider/slide17.jpg']
+    ), name='dharla_logistics'),
     
     path('maintenance/', TemplatePageView.as_view(
         template_name = "pages/maintenance.html",

@@ -1,0 +1,75 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}All Business{% endblock title %}
+
+
+<!-- page-content -->
+{% block page_content %}
+	<!-- business list -->
+	<section class="page-title-section bg-img cover-background secondary-overlay" data-overlay-dark="9">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Our Business</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<section>
+		<div class="container">
+			<div class="row mt-n1-9">
+				<div class="col-md-6 col-lg-6 mt-1-9">
+					<div class="service-box">
+						<div class="img-holder"><img alt="..." src="{% static 'assets/img/content/services/content-01.jpg' %}"></div>
+						<div class="clearfix service-inner-box">
+							<div class="service-icon-box"><i class="icon-presentation"></i></div>
+							<div class="service-content-box">
+								<h3 class="h5"><a href="#">Ship Building & Repairing</a></h3>
+								<p>Bay-Tech has developed strengths in conceptual, basic and detailed ship design.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6 mt-1-9">
+					<div class="service-box">
+						<div class="img-holder"><img alt="..." src="{% static 'assets/img/content/services/service-2.jpg' %}"></div>
+						<div class="clearfix service-inner-box">
+							<div class="service-icon-box"><i class="icon-presentation"></i></div>
+							<div class="service-content-box">
+								<h3 class="h5"><a href="#">Ship design & Consultancy</a></h3>
+								<p>Bay-Tech Ship Solution Zone (BSSZ) is an enlisted ship design firm from the Department of Shipping (DOS), established in 2008</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6 mt-1-9">
+					<div class="service-box">
+						<div class="img-holder"><img alt="..." src="{% static 'assets/img/content/services/content-02.jpg' %}"></div>
+						<div class="clearfix service-inner-box">
+							<div class="service-icon-box"><i class="icon-presentation"></i></div>
+							<div class="service-content-box">
+								<h3 class="h5"><a href="#">NDT & Engineering services</a></h3>
+								<p>Bay-Tech NDT & Engineering services provide modern advanced non-destructive testing (NDT) services.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6 mt-1-9">
+					<div class="service-box">
+						<div class="img-holder"><img alt="..." src="{% static 'assets/img/content/services/service-4b.jpg' %}"></div>
+						<div class="clearfix service-inner-box">
+							<div class="service-icon-box"><i class="icon-presentation"></i></div>
+							<div class="service-content-box">
+								<h3 class="h5"><a href="#">Dharla Logistics (Pvt.) Limited</a></h3>
+								<p>Dharla Logistics (Pvt.) Limited is a premier provider of comprehensive logistics solutions.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock page_content %}
+<!-- page-content -->

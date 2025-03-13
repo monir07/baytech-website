@@ -17,10 +17,13 @@ from page.forms import (ContactUsForm, DockingCertificateSearchForm)
 class TemplatePageView(generic.TemplateView):
     template_name = "home.html"
     image_urls = ['', '', '']
+    banner_texts = ['', '', '']
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['image_urls'] = self.image_urls
+        context['banner_texts'] = self.banner_texts
         return context
 
 
