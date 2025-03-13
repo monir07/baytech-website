@@ -41,9 +41,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- PAGINATION START FROM HERE -->
+            <small>Total {{ query_count }} Notice</small>
+            {% include 'components/pagination_copy.html' with items=page_obj %}
             </div>
-            <!-- PAGINATION START FROM HERE -->
-            {% include "components/pagination.html" %}
         </div>
     </section>
 {% endblock page_content %}

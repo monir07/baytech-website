@@ -26,22 +26,22 @@
             <div class="row">
                 <div class="col-md-6 pe-lg-0">
                     <ul class="footer-list mb-2 mb-md-0 ps-0">
-                        <li><a href="contact-4.html#!">Home</a></li>
-                        <li><a href="contact-4.html#!">About Us</a></li>
-                        <li><a href="contact-4.html#!">Facilities</a></li>
-                        <li><a href="contact-4.html#!">Management</a></li>
-                        <li><a href="contact-4.html#!">Business</a></li>
-                        <li><a href="contact-4.html#!">News</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about_us' %}">About Us</a></li>
+                        <li><a href="{% url 'maintenance' %}">Facilities</a></li>
+                        <li><a href="{% url 'team_members_list' %}">Management</a></li>
+                        <li><a href="{% url 'all_business_list' %}">Business</a></li>
+                        <li><a href="{% url 'news_insight_list' %}">News</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 pe-lg-0">
                     <ul class="footer-list ps-0">
-                        <li><a href="contact-4.html#!">Projects</a></li>
-                        <li><a href="contact-4.html#!">Office Order</a></li>
-                        <li><a href="contact-4.html#!">NOC</a></li>
-                        <li><a href="contact-4.html#!">Carriers</a></li>
-                        <li><a href="contact-4.html#!">Photo Gallery</a></li>
-                        <li><a href="contact-4.html#!">Contact Us</a></li>
+                        <li><a href="{% url 'new_building_project_list' %}">Projects</a></li>
+                        <li><a href="{% url 'notice_publish_list' %}">Notice</a></li>
+                        <li><a href="{% url 'noc_publish_list' %}">NOC</a></li>
+                        <li><a href="{% url 'job_post_list' %}">Carriers</a></li>
+                        <li><a href="{% url 'photo_gallery' %}">Photo Gallery</a></li>
+                        <li><a href="{% url 'contact_us_create' %}">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

@@ -33,9 +33,9 @@ v1_patterns = [
 
     
 urlpatterns = [
+    path('backend-dashboard/', admin.site.urls),
     re_path(r'^.*\.html', reference_page, name='ref_page'),
     path('', HomePageView.as_view(), name='home'),
-    path('admin/', admin.site.urls),
     path('users/', include(user_urls)),
     path('api/', include([
         path('v1.0/', include(v1_patterns))

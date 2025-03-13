@@ -7,6 +7,17 @@ from .models import (JobPost, TeamMember)
 
 
 urlpatterns = [
+    path('photo-gallery/', TemplatePageView.as_view(
+        template_name = "pages/photo_gallery.html",
+    ), name='photo_gallery'),
+    # about us urls
+    path('about-us/', TemplatePageView.as_view(
+        template_name = "pages/about_us.html",
+    ), name='about_us'),
+    # all business urls
+    path('all-businesses/', TemplatePageView.as_view(
+        template_name = "pages/business-list.html",
+    ), name='all_business_list'),
     path('shipbuilding/', TemplatePageView.as_view(
         template_name = "pages/shipbuilding.html",
         image_urls = ['assets/img/slider/slide19.jpg', 
@@ -39,13 +50,18 @@ urlpatterns = [
 
     path('dharla-logistics/', TemplatePageView.as_view(
         template_name = "pages/dharla_logistics.html",
-        image_urls = ['assets/img/slider/slide19.jpg', 'assets/img/slider/slide16.jpg', 'assets/img/slider/slide17.jpg']
+        image_urls = ['assets/img/slider/Dharla-banner-01.jpg', 
+                      'assets/img/slider/Dharla-banner-01.jpg', 
+                      'assets/img/slider/slide17.jpg'],
+        banner_texts = ['Dharla Logistics', 
+                        'Dharla Logistics', 
+                        'Dharla Logistics'],
     ), name='dharla_logistics'),
     
     path('maintenance/', TemplatePageView.as_view(
         template_name = "pages/maintenance.html",
     ), name='maintenance'),
-
+    # All Project List
     path('project/on-going/new-building', NewBuildingProjectListView.as_view(), name='new_building_project_list'),
     path('project/on-going/repair', RepairProjectListView.as_view(), name='repair_project_list'),
     path('project/completed', CompletedProjectListView.as_view(), name='completed_project_list'),
@@ -53,7 +69,7 @@ urlpatterns = [
     # news and insight urls
     path('news-insight/list', NewsInsightListView.as_view(), name='news_insight_list'),
     path('news-insight/details/<int:pk>', NewsDetailView.as_view(), name='news_insight_details'),
-    # Job Post List
+    # Carrier and Job Post List
     path('job-post/list', JobPostListView.as_view(), name='job_post_list'),
     path('job-post/details/<int:pk>', NewsDetailView.as_view(
         model = JobPost,
