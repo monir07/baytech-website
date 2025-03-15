@@ -7,7 +7,6 @@ from django.http import HttpResponse
 from django.conf import settings
 from celery import shared_task
 from celery.utils.log import get_task_logger
-from base.pdf_render import Render
 logger = get_task_logger(__name__)
 
 
@@ -65,20 +64,3 @@ def make_file_response(file_link=None):
         content="inline; filename=my_data.xlsx"
         response['Content-Disposition']=content
         return response
-
-
-from base.helpers.func import render_to_pdf
-def make_pdf_response(context):
-    pdf= render_to_pdf('purchase/payment_voucher.html',context)
-    if pdf:
-        response=HttpResponse(pdf, content_type="application/pdf")
-        content="inline; filename=voucher.pdf"
-        response['Content-Disposition']=content
-        return response
-    return HttpResponse("not found")
-
-@shared_task(name='core.base.pdf_report')
-def pdf_report(context: dict, email: str):
-    pdf = Render.render('base/pdf.html', context)
-    send_mail_pdf(subject=context.get('title'), to=email, text_content=f"{context.get('title')} -> Report", pdf_content=pdf)
-    return

@@ -1,31 +1,37 @@
-version: "3"
+version: '3.8'
+
 services:
+  # PostgreSQL Database
   db:
-    image: postgres:15.5-alpine
-    container_name: baytech-web-db
+    image: postgres:16.6-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=misfit
-      - POSTGRES_PASSWORD=3210
-      - POSTGRES_DB=alice
-    ports:
-      - 5435:5432
-
-  app:
-    build:
-      context: .
-      args:
-        - MODE=DEVELOPMENT
-    container_name: baytech-web
+      - POSTGRES_DB=baytech_web
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Ksy12345
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+  # web service
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/usr/code/
-      - ./logs/:/usr/logs/
-    env_file: .env
-    ports:
-      - 8010:8010
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    expose:
+      - "8000"
+    env_file:
+      - .env
     depends_on:
       - db
-
+  
 volumes:
-  postgres_data: {}
+  postgres_data:
+  static_volume:
+  media_volume:

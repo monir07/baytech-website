@@ -11,7 +11,6 @@ from io import BytesIO
 from django.template.loader import get_template
 from django.http import HttpResponse
 from django.db.models import Q
-from xhtml2pdf import pisa
 from django.db.models import Lookup
 from django.apps import apps
 from datetime import datetime, date, timedelta
@@ -63,7 +62,7 @@ def convert_to_date(type: str, number: int) -> str:
         output_date = today + datetime.timedelta(days=number*365)
     return output_date
 
-
+""" 
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html = template.render(context_dict)
@@ -72,7 +71,7 @@ def render_to_pdf(template_src, context_dict={}):
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type="application/pdf")
     return None
-
+"""
 
 def unique_id_generate(number_of_id):
     unique_id_list = []

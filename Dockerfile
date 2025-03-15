@@ -1,40 +1,35 @@
-FROM python:3.11.8-slim-bullseye as python-base
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=off \
-    PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100 \
-    POETRY_VERSION=1.7.1 \
-    POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_IN_PROJECT=true \
-    POETRY_NO_INTERACTION=1 \
-    PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv"
+# Install PostgreSQL development libraries and other dependencies
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc
 
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
+# Set the working directory inside the container
+WORKDIR /app
 
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-FROM python-base as builder-base
-ARG MODE
-ARG ENVIRONMENT
-WORKDIR $PYSETUP_PATH
-COPY poetry.lock pyproject.toml build-poetry.sh ./
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y git curl build-essential gcc g++ libpq-dev && \
-    curl -sSL https://install.python-poetry.org | python
-RUN ./build-poetry.sh
+# Install any needed dependencies specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the rest of the application code into the container
+COPY . .
 
-# `production` image used for runtime
-FROM python-base as runner
+# Expose the port your Django app will run on
+EXPOSE 8000
 
-COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-WORKDIR /usr/code
-RUN mkdir -p /usr/logs && \
-    addgroup --system user && \
-    adduser --system --no-create-home --group user && \
-    chown -R user:user /usr && chmod -R 755 /usr
-COPY . /usr/code
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8010"]
+# Add an entrypoint script to handle the database migration and user creation
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+# Run the entrypoint script by default
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# Default command to run Django's development server
+CMD ["python", "manage.py", "runserver"]
